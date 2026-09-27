@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.Quiz.QuestionData
   questionText: Seberapa sering sebaiknya kita memeriksakan gigi ke dokter gigi?
   options:
-  - 1 kali setahun
-  - 2 kali setahun
-  - 3 kali setahun
-  - Tidak perlu kalau tidak sakit
+  - 1 kali
+  - 2 kali
+  - hanya saat sakit gigi
   optionImages: []
   correctAnswerIndex: 1
