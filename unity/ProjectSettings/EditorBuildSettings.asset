@@ -8,5 +8,35 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4a25b1d8864ee4488b84bcfe7336d3f8
+  - enabled: 1
+    path: Assets/Scenes/P1_StrukturGigi.unity
+    guid: 07f77f3b28a264185ba259507cd90e36
+  - enabled: 1
+    path: Assets/Scenes/Pelatihan_3_LangkahSikat.unity
+    guid: e0fbb1548e12847079fb4514950ee002
+  - enabled: 1
+    path: Assets/Scenes/Pelatihan_2_PilihPasta.unity
+    guid: 6f0fd33eb69d54e2c86c7d9fe3975599
+  - enabled: 1
+    path: Assets/Scenes/Pelatihan_1_PilihSikat.unity
+    guid: 6d4f0bc7fe093420c8350b7926b404fb
+  - enabled: 1
+    path: Assets/Scenes/P6_CekDokter.unity
+    guid: da010420a16d244cd9490076a66570b5
+  - enabled: 1
+    path: Assets/Scenes/P5_SortingMakanan.unity
+    guid: 96aaa2ca0833e476087635496b045f2b
+  - enabled: 1
+    path: Assets/Scenes/P4_FrekuensiSikat.unity
+    guid: 489e86b22d0f540238fd0b9542ed2f9c
+  - enabled: 1
+    path: Assets/Scenes/P3_ProsesKaries.unity
+    guid: 4e0efec0e95dc43039ff1ec6d25d7370
+  - enabled: 1
+    path: Assets/Scenes/P2_Karies.unity
+    guid: 185a6e2bd7b524f9e84cb6ba16c3bfa3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
