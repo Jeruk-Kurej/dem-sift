@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd768228b916d4f7cb94ec014569d003, type: 3}
+  m_Name: Q_Pengetahuan2_Karies
+  m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.Quiz.QuestionData
+  questionText: Manakah gambar yang menunjukkan gigi berlubang / karies?
+  options:
+  - Gambar 1
+  - Gambar 2
+  optionImages:
+  - {fileID: -9072712822205703700, guid: b53d9c81a17dd4d57964d5601fccef6d, type: 3}
+  - {fileID: -1150343599687167651, guid: 413414d7698834149972b33c84a2a158, type: 3}
+  correctAnswerIndex: 0
