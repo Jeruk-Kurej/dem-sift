@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.Quiz.QuestionData
   questionText: Berapa kali sebaiknya kita menyikat gigi dalam sehari?
   options:
-  - 1 kali
-  - 2 kali
-  - 3 kali
-  - 4 kali
+  - 1 kali sehari, saat malam hari
+  - 2 kali sehari, pagi setelah sarapan dan malam sebelum tidur
+  - 1 kali sehari, saat pagi hari
   optionImages: []
   correctAnswerIndex: 1
