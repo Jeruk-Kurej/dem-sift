@@ -9,6 +9,20 @@ namespace DEMSIFT.Scoring
         private static readonly int[] scores = new int[SoalCount];
         private static readonly int[] wrongAttempts = new int[SoalCount];
 
+        public static int Total
+        {
+            get
+            {
+                int total = 0;
+                foreach (int score in scores) total += score;
+                return total;
+            }
+        }
+
+        public static int ScoreOf(int soalNumber) => scores[soalNumber - 1];
+
+        public static int WrongAttemptsOf(int soalNumber) => wrongAttempts[soalNumber - 1];
+
         public static void Record(int soalNumber, int score, int wrongAttemptCount)
         {
             scores[soalNumber - 1] = score;

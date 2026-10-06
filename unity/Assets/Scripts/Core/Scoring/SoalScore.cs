@@ -15,6 +15,7 @@ namespace DEMSIFT.Scoring
         private int wrongAttempts;
 
         public event Action<int> Changed;
+        public event Action Completed;
 
         public int Current => Mathf.Max(MinScore, StartScore - wrongAttempts * PenaltyPerWrongAttempt);
 
@@ -33,6 +34,7 @@ namespace DEMSIFT.Scoring
         {
             ScoreSession.Record(soalNumber, Current, wrongAttempts);
             resultPopup.ShowCorrect(Current);
+            Completed?.Invoke();
         }
     }
 }
