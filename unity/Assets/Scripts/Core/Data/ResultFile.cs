@@ -9,6 +9,7 @@ namespace DEMSIFT.Data
 {
     public static class ResultFile
     {
+        private const string FolderName = "Hasil";
         private const string FileName = "hasil-pengetahuan.txt";
         private const string Separator = "\t";
         private const string TimestampFormat = "yyyy-MM-dd HH:mm:ss";
@@ -17,7 +18,15 @@ namespace DEMSIFT.Data
         private const int ClassColumn = 2;
         private const int ColumnCount = 3 + ScoreSession.SoalCount * 2 + 1;
 
-        public static string FolderPath => Application.persistentDataPath;
+        public static string FolderPath
+        {
+            get
+            {
+                string folderPath = Path.Combine(Application.persistentDataPath, FolderName);
+                Directory.CreateDirectory(folderPath);
+                return folderPath;
+            }
+        }
 
         public static string FilePath => Path.Combine(FolderPath, FileName);
 
