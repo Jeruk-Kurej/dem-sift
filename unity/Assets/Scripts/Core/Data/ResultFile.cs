@@ -12,15 +12,20 @@ namespace DEMSIFT.Data
         private const string FileName = "hasil-pengetahuan.txt";
         private const string Separator = "\t";
         private const string TimestampFormat = "yyyy-MM-dd HH:mm:ss";
+        private const string ArchiveTimestampFormat = "yyyy-MM-dd_HH-mm-ss";
         private const int NameColumn = 1;
         private const int ClassColumn = 2;
         private const int ColumnCount = 3 + ScoreSession.SoalCount * 2 + 1;
 
-        public static string FilePath => Path.Combine(Application.persistentDataPath, FileName);
+        public static string FolderPath => Application.persistentDataPath;
+
+        public static string FilePath => Path.Combine(FolderPath, FileName);
+
+        public static bool Exists => File.Exists(FilePath);
 
         public static void AppendCurrentPlayer()
         {
-            if (!File.Exists(FilePath))
+            if (!Exists)
             {
                 File.WriteAllText(FilePath, Header() + Environment.NewLine);
             }
@@ -31,7 +36,7 @@ namespace DEMSIFT.Data
         public static List<PlayerResult> ReadAll()
         {
             var results = new List<PlayerResult>();
-            if (!File.Exists(FilePath)) return results;
+            if (!Exists) return results;
 
             string[] lines = File.ReadAllLines(FilePath);
             for (int i = 1; i < lines.Length; i++)
@@ -44,6 +49,30 @@ namespace DEMSIFT.Data
             }
 
             return results;
+        }
+
+        // --- Admin ---
+        public static string Archive()
+        {
+            string archiveName = $"{Path.GetFileNameWithoutExtension(FileName)}_{DateTime.Now.ToString(ArchiveTimestampFormat)}.txt";
+            File.Move(FilePath, Path.Combine(FolderPath, archiveName));
+            return archiveName;
+        }
+
+        public static string ExportCsv()
+        {
+            string csvName = Path.ChangeExtension(FileName, ".csv");
+            var csvLines = new List<string>();
+
+            foreach (string line in File.ReadAllLines(FilePath))
+            {
+                var fields = new List<string>();
+                foreach (string field in line.Split(Separator)) fields.Add($"\"{field.Replace("\"", "\"\"")}\"");
+                csvLines.Add(string.Join(",", fields));
+            }
+
+            File.WriteAllLines(Path.Combine(FolderPath, csvName), csvLines);
+            return csvName;
         }
 
         // --- Line format ---
