@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd768228b916d4f7cb94ec014569d003, type: 3}
   m_Name: Q_Pengetahuan4_FrekuensiSikat
-  m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.Quiz.QuestionData
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Quiz.QuestionData
   questionText: Berapa kali dalam sehari kita menyikat gigi dan kapan waktunya?
   options:
   - 1 kali sehari, saat malam hari

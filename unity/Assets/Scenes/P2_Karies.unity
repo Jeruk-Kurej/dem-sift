@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2416435a160cb488a81c5945bd6212bf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.Quiz.QuizController
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Quiz.QuizController
   question: {fileID: 11400000, guid: d297f5a3056d4487bab6b0c9f36a308a, type: 2}
   questionLabel: {fileID: 1148231107}
   answerButtonContainer: {fileID: 1230345390}
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 364d17e0194634a82a994ebfb84f95f1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.SceneLoader
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Core.SceneLoader
 --- !u!4 &1658857559
 Transform:
   m_ObjectHideFlags: 0
@@ -1344,7 +1344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675172581708088984, guid: 62cb0c76b3e67479290c0ec6488764ed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DemSift.Core.SceneLoader, Assembly-CSharp
+      value: DEMSIFT.Core.SceneLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8675172581708088984, guid: 62cb0c76b3e67479290c0ec6488764ed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument

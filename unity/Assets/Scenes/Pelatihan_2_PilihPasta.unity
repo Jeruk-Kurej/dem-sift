@@ -282,7 +282,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1919032878}
-        m_TargetAssemblyTypeName: DemSift.Core.SceneLoader, Assembly-CSharp
+        m_TargetAssemblyTypeName: DEMSIFT.Core.SceneLoader, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 364d17e0194634a82a994ebfb84f95f1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DemSift.Core.SceneLoader
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Core.SceneLoader
 --- !u!4 &1919032879
 Transform:
   m_ObjectHideFlags: 0

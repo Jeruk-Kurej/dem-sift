@@ -1,4 +1,4 @@
-using DemSift.Core;
+using DEMSIFT.Core;
 using DEMSIFT.Scoring;
 using TMPro;
 using UnityEngine;

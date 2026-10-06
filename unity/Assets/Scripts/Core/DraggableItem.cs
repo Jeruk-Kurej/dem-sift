@@ -48,7 +48,6 @@ namespace DEMSIFT.Puzzle
 
             canvasGroup.blocksRaycasts = true;
 
-            // If OnDrop on a valid DropZone didn't lock it in place, snap back to tray
             if (transform.parent == startParent)
             {
                 rectTransform.anchoredPosition = startAnchoredPosition;

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DemSift.Core.Quiz
+namespace DEMSIFT.Quiz
 {
     public class QuizController : MonoBehaviour
     {
