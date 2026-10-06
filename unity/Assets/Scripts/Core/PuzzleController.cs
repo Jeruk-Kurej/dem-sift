@@ -26,7 +26,7 @@ namespace DEMSIFT.Puzzle
 
             nextButton.interactable = false;
             SpawnPieces();
-            ScatterPieces();
+            ArrangePieces();
         }
 
         // --- Setup ---
@@ -49,11 +49,11 @@ namespace DEMSIFT.Puzzle
             }
         }
 
-        private void ScatterPieces()
+        private void ArrangePieces()
         {
-            if (pieceTrayContainer.TryGetComponent(out TrayScatter scatter))
+            if (pieceTrayContainer.TryGetComponent(out TrayArranger arranger))
             {
-                scatter.Scatter();
+                arranger.Arrange();
             }
         }
 

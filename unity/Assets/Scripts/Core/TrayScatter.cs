@@ -3,16 +3,19 @@ using UnityEngine;
 
 namespace DEMSIFT.Puzzle
 {
-    public class TrayScatter : MonoBehaviour
+    public class TrayScatter : TrayArranger
     {
         [SerializeField] private Vector2 spread = new(450f, 90f);
         [SerializeField] private int candidatesPerPiece = 12;
 
-        public void Scatter()
+        public override void Arrange()
         {
+            var pieces = new List<RectTransform>();
+            foreach (RectTransform piece in transform) pieces.Add(piece);
+
             var placed = new List<Vector2>();
 
-            foreach (RectTransform piece in transform)
+            foreach (RectTransform piece in pieces)
             {
                 piece.anchorMin = piece.anchorMax = piece.pivot = new Vector2(0.5f, 0.5f);
 
