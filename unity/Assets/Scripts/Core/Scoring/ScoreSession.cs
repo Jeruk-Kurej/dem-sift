@@ -19,6 +19,18 @@ namespace DEMSIFT.Scoring
             }
         }
 
+        public static bool IsComplete
+        {
+            get
+            {
+                foreach (int score in scores)
+                {
+                    if (score == 0) return false;
+                }
+                return true;
+            }
+        }
+
         public static int ScoreOf(int soalNumber) => scores[soalNumber - 1];
 
         public static int WrongAttemptsOf(int soalNumber) => wrongAttempts[soalNumber - 1];
