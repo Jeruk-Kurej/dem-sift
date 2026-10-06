@@ -16,7 +16,9 @@ MonoBehaviour:
   options:
   - Gambar 1
   - Gambar 2
+  - Gambar 3
   optionImages:
   - {fileID: -9072712822205703700, guid: b53d9c81a17dd4d57964d5601fccef6d, type: 3}
   - {fileID: -1150343599687167651, guid: 413414d7698834149972b33c84a2a158, type: 3}
+  - {fileID: 1865834387741608654, guid: 4d6ecb74a51764580b4683ed1739f869, type: 3}
   correctAnswerIndex: 0

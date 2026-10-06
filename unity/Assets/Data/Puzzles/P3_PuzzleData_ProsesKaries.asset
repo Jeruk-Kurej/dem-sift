@@ -23,3 +23,6 @@ MonoBehaviour:
   - pieceId: bakteri
     pieceSprite: {fileID: 0}
     correctZoneId: zone_bakteri
+  - pieceId: gigi_berlubang
+    pieceSprite: {fileID: 0}
+    correctZoneId: zone_gigi_berlubang
