@@ -6,13 +6,14 @@ namespace DEMSIFT.Puzzle
     public class DropZone : MonoBehaviour, IDropHandler
     {
         public string zoneId;
+        public int capacity = 1;
         public PuzzleController puzzleController;
 
-        private bool isFilled;
+        private int filledCount;
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (isFilled) return;
+            if (filledCount >= capacity) return;
 
             DraggableItem item = eventData.pointerDrag != null
                 ? eventData.pointerDrag.GetComponent<DraggableItem>()
@@ -23,7 +24,7 @@ namespace DEMSIFT.Puzzle
             if (item.correctZoneId == zoneId)
             {
                 item.LockIntoZone(transform);
-                isFilled = true;
+                filledCount++;
                 puzzleController.NotifyCorrectPlacement();
             }
             else

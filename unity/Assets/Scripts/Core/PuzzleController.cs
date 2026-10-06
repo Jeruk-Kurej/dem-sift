@@ -26,6 +26,7 @@ namespace DEMSIFT.Puzzle
 
             nextButton.interactable = false;
             SpawnPieces();
+            ScatterPieces();
         }
 
         // --- Setup ---
@@ -36,9 +37,23 @@ namespace DEMSIFT.Puzzle
                 GameObject pieceObject = Instantiate(piecePrefab, pieceTrayContainer);
                 pieceObject.GetComponent<Image>().sprite = piece.pieceSprite;
 
+                TMP_Text caption = pieceObject.GetComponentInChildren<TMP_Text>();
+                if (caption != null)
+                {
+                    caption.text = piece.pieceId;
+                }
+
                 DraggableItem draggable = pieceObject.GetComponent<DraggableItem>();
                 draggable.pieceId = piece.pieceId;
                 draggable.correctZoneId = piece.correctZoneId;
+            }
+        }
+
+        private void ScatterPieces()
+        {
+            if (pieceTrayContainer.TryGetComponent(out TrayScatter scatter))
+            {
+                scatter.Scatter();
             }
         }
 
