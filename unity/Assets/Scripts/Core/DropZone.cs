@@ -13,15 +13,13 @@ namespace DEMSIFT.Puzzle
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (filledCount >= capacity) return;
-
             DraggableItem item = eventData.pointerDrag != null
                 ? eventData.pointerDrag.GetComponent<DraggableItem>()
                 : null;
 
-            if (item == null) return;
+            if (item == null || item.IsPlaced) return;
 
-            if (item.correctZoneId == zoneId)
+            if (filledCount < capacity && item.correctZoneId == zoneId)
             {
                 item.LockIntoZone(transform);
                 filledCount++;
@@ -29,7 +27,9 @@ namespace DEMSIFT.Puzzle
             }
             else
             {
+                Vector3 dropPosition = item.transform.position;
                 item.ReturnToTray();
+                puzzleController.NotifyWrongPlacement(dropPosition);
             }
         }
     }

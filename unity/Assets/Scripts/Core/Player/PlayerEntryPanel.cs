@@ -1,4 +1,5 @@
 using DemSift.Core;
+using DEMSIFT.Scoring;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,7 @@ namespace DEMSIFT.Player
             if (!IsComplete()) return;
 
             PlayerSession.Begin(nameInput.text, SelectedLabel(gradeGroup) + SelectedLabel(sectionGroup));
+            ScoreSession.Clear();
             sceneLoader.LoadScene(targetScene);
         }
 

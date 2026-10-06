@@ -16,6 +16,8 @@ namespace DEMSIFT.Puzzle
         private Vector2 startAnchoredPosition;
         private bool isPlaced;
 
+        public bool IsPlaced => isPlaced;
+
         private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();

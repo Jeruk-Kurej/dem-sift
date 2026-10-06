@@ -1,12 +1,11 @@
+using System.Collections.Generic;
+using DEMSIFT.Scoring;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DemSift.Core.Quiz
 {
-    // Reusable quiz logic. Assign a QuestionData asset in the Inspector,
-    // and this generates the answer buttons and checks clicks automatically.
-    // Supports both text answers and image answers (see QuestionData.optionImages).
     public class QuizController : MonoBehaviour
     {
         [Header("Data")]
@@ -16,32 +15,37 @@ namespace DemSift.Core.Quiz
         [SerializeField] private TMP_Text questionLabel;
         [SerializeField] private Transform answerButtonContainer;
         [SerializeField] private Button answerButtonPrefab;
+        [SerializeField] private Button submitButton;
+        [SerializeField] private Color selectedColor = new(1f, 0.85f, 0.3f);
+
+        [Header("Result")]
+        [SerializeField] private SoalScore soalScore;
+        [SerializeField] private ResultPopup resultPopup;
+
+        private readonly List<Button> answerButtons = new();
+        private int selectedIndex = -1;
 
         private void Start()
         {
-            DisplayQuestion();
+            questionLabel.text = question.questionText;
+            SpawnAnswerButtons();
+
+            submitButton.interactable = false;
+            submitButton.onClick.AddListener(Submit);
         }
 
-        private void DisplayQuestion()
+        // --- Setup ---
+        private void SpawnAnswerButtons()
         {
-            questionLabel.text = question.questionText;
-
-            // Clear any leftover buttons (safety, in case of re-display)
-            foreach (Transform child in answerButtonContainer)
-            {
-                Destroy(child.gameObject);
-            }
-
             bool usesImages = question.optionImages != null && question.optionImages.Length == question.options.Length;
 
-            // Generate one button per answer option, however many there are
             for (int i = 0; i < question.options.Length; i++)
             {
-                int optionIndex = i; // local copy, needed so the click callback below captures the right index
-                Button newButton = Instantiate(answerButtonPrefab, answerButtonContainer);
+                int optionIndex = i;
+                Button button = Instantiate(answerButtonPrefab, answerButtonContainer);
 
-                TMP_Text label = newButton.GetComponentInChildren<TMP_Text>();
-                Image icon = newButton.transform.Find("AnswerImage")?.GetComponent<Image>();
+                TMP_Text label = button.GetComponentInChildren<TMP_Text>();
+                Image icon = button.transform.Find("AnswerImage")?.GetComponent<Image>();
 
                 if (usesImages && icon != null)
                 {
@@ -55,16 +59,35 @@ namespace DemSift.Core.Quiz
                     if (icon != null) icon.gameObject.SetActive(false);
                 }
 
-                newButton.onClick.AddListener(() => OnAnswerSelected(optionIndex));
+                button.onClick.AddListener(() => Select(optionIndex));
+                answerButtons.Add(button);
             }
         }
 
-        private void OnAnswerSelected(int selectedIndex)
+        // --- Answering ---
+        private void Select(int optionIndex)
         {
-            bool isCorrect = selectedIndex == question.correctAnswerIndex;
-            Debug.Log(isCorrect ? "Benar!" : "Salah, coba lagi.");
+            selectedIndex = optionIndex;
+            submitButton.interactable = true;
 
-            // TODO: replace with real feedback later (color change, sound, move to next scene)
+            for (int i = 0; i < answerButtons.Count; i++)
+            {
+                answerButtons[i].image.color = i == selectedIndex ? selectedColor : Color.white;
+            }
+        }
+
+        private void Submit()
+        {
+            if (selectedIndex < 0) return;
+
+            if (selectedIndex == question.correctAnswerIndex)
+            {
+                soalScore.Complete();
+            }
+            else
+            {
+                resultPopup.ShowWrong(soalScore.RegisterWrongAttempt());
+            }
         }
     }
 }

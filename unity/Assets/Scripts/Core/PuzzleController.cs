@@ -1,3 +1,4 @@
+using DEMSIFT.Scoring;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,10 @@ namespace DEMSIFT.Puzzle
         public TMP_Text questionLabel;
         public Transform pieceTrayContainer;
         public GameObject piecePrefab;
-        public Button nextButton;
+
+        [Header("Result")]
+        [SerializeField] private SoalScore soalScore;
+        [SerializeField] private PenaltyFeedback penaltyFeedback;
 
         private int correctCount;
 
@@ -24,7 +28,6 @@ namespace DEMSIFT.Puzzle
                 questionLabel.text = data.questionText;
             }
 
-            nextButton.interactable = false;
             SpawnPieces();
             ArrangePieces();
         }
@@ -63,8 +66,13 @@ namespace DEMSIFT.Puzzle
             correctCount++;
             if (correctCount >= data.pieces.Count)
             {
-                nextButton.interactable = true;
+                soalScore.Complete();
             }
+        }
+
+        public void NotifyWrongPlacement(Vector3 dropPosition)
+        {
+            penaltyFeedback.Show(soalScore.RegisterWrongAttempt(), dropPosition);
         }
     }
 }
