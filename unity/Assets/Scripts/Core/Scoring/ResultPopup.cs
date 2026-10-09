@@ -15,6 +15,10 @@ namespace DEMSIFT.Scoring
         [SerializeField] private GameObject nextButton;
         [SerializeField] private GameObject retryButton;
 
+        [Header("Icons")]
+        [SerializeField] private GameObject correctIcon;
+        [SerializeField] private GameObject wrongIcon;
+
         public void ShowCorrect(int score)
         {
             Show(correctMessage, $"Skor: {score}", true);
@@ -36,6 +40,8 @@ namespace DEMSIFT.Scoring
             scoreLabel.text = scoreText;
             nextButton.SetActive(isCorrect);
             retryButton.SetActive(!isCorrect);
+            correctIcon.SetActive(isCorrect);
+            wrongIcon.SetActive(!isCorrect);
             gameObject.SetActive(true);
         }
     }

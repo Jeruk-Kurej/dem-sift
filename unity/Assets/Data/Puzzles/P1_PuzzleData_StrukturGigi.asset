@@ -15,7 +15,7 @@ MonoBehaviour:
   questionText: Susun bagian gigi sesuai posisinya
   pieces:
   - pieceId: enamel
-    label: ENAMEL
+    label: EMAIL
     pieceSprite: {fileID: 21300000, guid: c7d26f69b0ee04ed8bafd4698ffb2303, type: 3}
     correctZoneId: zone_enamel
   - pieceId: dentin
