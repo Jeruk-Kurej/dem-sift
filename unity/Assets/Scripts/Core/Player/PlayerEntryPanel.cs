@@ -11,7 +11,6 @@ namespace DEMSIFT.Player
         [Header("Inputs")]
         [SerializeField] private TMP_InputField nameInput;
         [SerializeField] private ToggleGroup gradeGroup;
-        [SerializeField] private ToggleGroup sectionGroup;
 
         [Header("Navigation")]
         [SerializeField] private Button startButton;
@@ -24,7 +23,6 @@ namespace DEMSIFT.Player
         {
             nameInput.onValueChanged.AddListener(_ => Refresh());
             ListenTo(gradeGroup);
-            ListenTo(sectionGroup);
         }
 
         // --- Called by buttons ---
@@ -44,7 +42,7 @@ namespace DEMSIFT.Player
         {
             if (!IsComplete()) return;
 
-            PlayerSession.Begin(nameInput.text, SelectedLabel(gradeGroup) + SelectedLabel(sectionGroup));
+            PlayerSession.Begin(nameInput.text, SelectedLabel(gradeGroup));
             ScoreSession.Clear();
             sceneLoader.LoadScene(targetScene);
         }
@@ -68,8 +66,7 @@ namespace DEMSIFT.Player
         private bool IsComplete()
         {
             return !string.IsNullOrWhiteSpace(nameInput.text)
-                && gradeGroup.AnyTogglesOn()
-                && sectionGroup.AnyTogglesOn();
+                && gradeGroup.AnyTogglesOn();
         }
 
         private static string SelectedLabel(ToggleGroup group)

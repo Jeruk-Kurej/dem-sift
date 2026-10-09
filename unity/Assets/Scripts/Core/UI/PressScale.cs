@@ -14,6 +14,11 @@ namespace DEMSIFT.UI
             normalScale = transform.localScale;
         }
 
+        private void OnDisable()
+        {
+            transform.localScale = normalScale;
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             transform.localScale = normalScale * pressedScale;
