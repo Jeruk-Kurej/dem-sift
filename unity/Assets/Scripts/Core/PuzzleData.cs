@@ -10,6 +10,8 @@ namespace DEMSIFT.Puzzle
         public class PuzzlePiece
         {
             public string pieceId;
+            [Tooltip("Text shown on the piece. Leave empty to show the piece id.")]
+            public string label;
             public Sprite pieceSprite;
             public string correctZoneId;
         }

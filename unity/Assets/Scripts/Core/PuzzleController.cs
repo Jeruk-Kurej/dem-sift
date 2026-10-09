@@ -43,7 +43,7 @@ namespace DEMSIFT.Puzzle
                 TMP_Text caption = pieceObject.GetComponentInChildren<TMP_Text>();
                 if (caption != null)
                 {
-                    caption.text = piece.pieceId;
+                    caption.text = string.IsNullOrEmpty(piece.label) ? piece.pieceId : piece.label;
                 }
 
                 DraggableItem draggable = pieceObject.GetComponent<DraggableItem>();

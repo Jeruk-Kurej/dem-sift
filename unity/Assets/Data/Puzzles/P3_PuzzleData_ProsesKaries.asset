@@ -15,14 +15,18 @@ MonoBehaviour:
   questionText: Susun proses terjadinya gigi berlubang
   pieces:
   - pieceId: gigi_sehat
-    pieceSprite: {fileID: 0}
+    label: Gigi Sehat
+    pieceSprite: {fileID: 21300000, guid: a89a223780cf54bf1924147b8a509380, type: 3}
     correctZoneId: zone_gigi_sehat
   - pieceId: makanan
-    pieceSprite: {fileID: 0}
+    label: Soda, permen, dan cokelat
+    pieceSprite: {fileID: 21300000, guid: c9ca3f5252163425cb0772aaab796d61, type: 3}
     correctZoneId: zone_makanan
   - pieceId: bakteri
-    pieceSprite: {fileID: 0}
+    label: Bakteri
+    pieceSprite: {fileID: 21300000, guid: 1a7b6bb11fdc74dd58f260aa8b7b1a2b, type: 3}
     correctZoneId: zone_bakteri
   - pieceId: gigi_berlubang
-    pieceSprite: {fileID: 0}
+    label: Gigi Berlubang
+    pieceSprite: {fileID: 21300000, guid: 073c271f99e0a4110b8562df22acaabd, type: 3}
     correctZoneId: zone_gigi_berlubang

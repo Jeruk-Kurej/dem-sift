@@ -15,26 +15,34 @@ MonoBehaviour:
   questionText: Pilah makanan yang baik dan yang merusak gigi
   pieces:
   - pieceId: apel
-    pieceSprite: {fileID: 0}
+    label: Apel
+    pieceSprite: {fileID: 21300000, guid: 50e9862fb0b574c1383e309e880be277, type: 3}
     correctZoneId: zone_baik
   - pieceId: pear
-    pieceSprite: {fileID: 0}
+    label: Pir
+    pieceSprite: {fileID: 21300000, guid: f6d8407cace554e028975218dacbb184, type: 3}
     correctZoneId: zone_baik
   - pieceId: sayur
-    pieceSprite: {fileID: 0}
+    label: Sayur
+    pieceSprite: {fileID: 21300000, guid: d2b68cdaf9e2643ba908ca28705e9319, type: 3}
     correctZoneId: zone_baik
   - pieceId: ikan
-    pieceSprite: {fileID: 0}
+    label: Ikan
+    pieceSprite: {fileID: 21300000, guid: 2f93bfeb024c447dfa55f8dbc33ce118, type: 3}
     correctZoneId: zone_baik
   - pieceId: permen
-    pieceSprite: {fileID: 0}
+    label: Permen
+    pieceSprite: {fileID: 21300000, guid: c7a8687ae8edc4b7d94c0b6e622d7937, type: 3}
     correctZoneId: zone_rusak
   - pieceId: soda
-    pieceSprite: {fileID: 0}
+    label: Soda
+    pieceSprite: {fileID: 21300000, guid: 9884efb55bae145d9891ae225ec21c8a, type: 3}
     correctZoneId: zone_rusak
   - pieceId: coklat
-    pieceSprite: {fileID: 0}
+    label: Cokelat
+    pieceSprite: {fileID: 21300000, guid: 90e51f841fbc34edd8a2b32d7014dd9b, type: 3}
     correctZoneId: zone_rusak
   - pieceId: cotton_candy
-    pieceSprite: {fileID: 0}
+    label: Permen kapas
+    pieceSprite: {fileID: 21300000, guid: cac6947f0b33b4da68fefa01fe89e531, type: 3}
     correctZoneId: zone_rusak

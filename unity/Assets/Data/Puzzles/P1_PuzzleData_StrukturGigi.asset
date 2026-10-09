@@ -15,11 +15,14 @@ MonoBehaviour:
   questionText: Susun bagian gigi sesuai posisinya
   pieces:
   - pieceId: enamel
-    pieceSprite: {fileID: 0}
+    label: ENAMEL
+    pieceSprite: {fileID: 21300000, guid: c7d26f69b0ee04ed8bafd4698ffb2303, type: 3}
     correctZoneId: zone_enamel
   - pieceId: dentin
-    pieceSprite: {fileID: 0}
+    label: DENTIN
+    pieceSprite: {fileID: 21300000, guid: e7ebc813f2f914e53916d9b954ac9ae5, type: 3}
     correctZoneId: zone_dentin
   - pieceId: pulpa
-    pieceSprite: {fileID: 0}
+    label: RUANG PULPA
+    pieceSprite: {fileID: 21300000, guid: 2a89f8fc9623441f4be740fe053a0bae, type: 3}
     correctZoneId: zone_pulpa
