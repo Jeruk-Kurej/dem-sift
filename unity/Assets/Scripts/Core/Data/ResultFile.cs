@@ -11,9 +11,11 @@ namespace DEMSIFT.Data
     {
         private const string FolderName = "Hasil";
         private const string FileName = "hasil-pengetahuan.txt";
+        private const string ExportFolderName = "Export";
+        private const string ArchiveFolderName = "Arsip";
         private const string Separator = "\t";
         private const string TimestampFormat = "yyyy-MM-dd HH:mm:ss";
-        private const string ArchiveTimestampFormat = "yyyy-MM-dd_HH-mm-ss";
+        private const string FileTimestampFormat = "yyyy-MM-dd_HH-mm-ss";
         private const int NameColumn = 1;
         private const int ClassColumn = 2;
         private const int ColumnCount = 3 + ScoreSession.SoalCount * 2 + 1;
@@ -63,14 +65,14 @@ namespace DEMSIFT.Data
         // --- Admin ---
         public static string Archive()
         {
-            string archiveName = $"{Path.GetFileNameWithoutExtension(FileName)}_{DateTime.Now.ToString(ArchiveTimestampFormat)}.txt";
-            File.Move(FilePath, Path.Combine(FolderPath, archiveName));
-            return archiveName;
+            string archivePath = StampedPath(ArchiveFolderName, ".txt");
+            File.Move(FilePath, Path.Combine(FolderPath, archivePath));
+            return archivePath;
         }
 
         public static string ExportCsv()
         {
-            string csvName = Path.ChangeExtension(FileName, ".csv");
+            string csvPath = StampedPath(ExportFolderName, ".csv");
             var csvLines = new List<string>();
 
             foreach (string line in File.ReadAllLines(FilePath))
@@ -80,8 +82,16 @@ namespace DEMSIFT.Data
                 csvLines.Add(string.Join(",", fields));
             }
 
-            File.WriteAllLines(Path.Combine(FolderPath, csvName), csvLines);
-            return csvName;
+            File.WriteAllLines(Path.Combine(FolderPath, csvPath), csvLines);
+            return csvPath;
+        }
+
+        private static string StampedPath(string subfolderName, string extension)
+        {
+            Directory.CreateDirectory(Path.Combine(FolderPath, subfolderName));
+
+            string stampedName = $"{Path.GetFileNameWithoutExtension(FileName)}_{DateTime.Now.ToString(FileTimestampFormat)}{extension}";
+            return Path.Combine(subfolderName, stampedName);
         }
 
         // --- Line format ---

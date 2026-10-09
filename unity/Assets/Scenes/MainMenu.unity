@@ -5790,8 +5790,8 @@ GameObject:
   - component: {fileID: 736242379}
   - component: {fileID: 736242381}
   - component: {fileID: 736242380}
-  - component: {fileID: 736242382}
   - component: {fileID: 736242383}
+  - component: {fileID: 736242384}
   m_Layer: 5
   m_Name: Logo UC
   m_TagString: Untagged
@@ -5853,7 +5853,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736242378}
   m_CullTransparentMesh: 1
---- !u!114 &736242382
+--- !u!114 &736242383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5862,11 +5862,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 736242378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf99391008e3a4706b580c9e88c12fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 96d4e812f3826430689b667d0629fa6e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.UI.LongPressTrigger
-  holdSeconds: 3
-  longPressed:
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.UI.PressScale
+  pressedScale: 0.9
+--- !u!114 &736242384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736242378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be309674eb06140a5a8f875bdb56cfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.UI.MultiTapTrigger
+  requiredTaps: 5
+  windowSeconds: 2
+  triggered:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 415921472}
@@ -5881,19 +5895,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &736242383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736242378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d4e812f3826430689b667d0629fa6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.UI.PressScale
-  pressedScale: 0.9
 --- !u!1 &786016737
 GameObject:
   m_ObjectHideFlags: 0
