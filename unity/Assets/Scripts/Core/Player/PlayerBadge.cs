@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DEMSIFT.Player
 {
-    [RequireComponent(typeof(TMP_Text))]
     public class PlayerBadge : MonoBehaviour
     {
         private void Start()
@@ -14,7 +13,7 @@ namespace DEMSIFT.Player
                 return;
             }
 
-            GetComponent<TMP_Text>().text = $"{PlayerSession.PlayerName} · {PlayerSession.ClassName}";
+            GetComponentInChildren<TMP_Text>().text = $"{PlayerSession.PlayerName} · {PlayerSession.ClassName}";
         }
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DEMSIFT.Scoring
 {
-    [RequireComponent(typeof(TMP_Text))]
     public class ScoreLabel : MonoBehaviour
     {
         [SerializeField] private SoalScore soalScore;
@@ -12,7 +11,7 @@ namespace DEMSIFT.Scoring
 
         private void Start()
         {
-            label = GetComponent<TMP_Text>();
+            label = GetComponentInChildren<TMP_Text>();
             soalScore.Changed += Show;
             Show(soalScore.Current);
         }
