@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 8675172581708088984}
   - component: {fileID: 4894177331716430856}
   m_Layer: 5
-  m_Name: Button_Lanjut
+  m_Name: Button_Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 3600439417954527832}
   - component: {fileID: 1058537848493505707}
   m_Layer: 5
-  m_Name: Button_CobaLagi
+  m_Name: Button_TryAgain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

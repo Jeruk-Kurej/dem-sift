@@ -8,12 +8,12 @@ namespace DEMSIFT.Puzzle
     public class PuzzleController : MonoBehaviour
     {
         [Header("Data")]
-        public PuzzleData data;
+        [SerializeField] private PuzzleData data;
 
         [Header("UI References")]
-        public TMP_Text questionLabel;
-        public Transform pieceTrayContainer;
-        public GameObject piecePrefab;
+        [SerializeField] private TMP_Text questionLabel;
+        [SerializeField] private Transform pieceTrayContainer;
+        [SerializeField] private GameObject piecePrefab;
 
         [Header("Result")]
         [SerializeField] private SoalScore soalScore;
@@ -46,9 +46,7 @@ namespace DEMSIFT.Puzzle
                     caption.text = string.IsNullOrEmpty(piece.label) ? piece.pieceId : piece.label;
                 }
 
-                DraggableItem draggable = pieceObject.GetComponent<DraggableItem>();
-                draggable.pieceId = piece.pieceId;
-                draggable.correctZoneId = piece.correctZoneId;
+                pieceObject.GetComponent<DraggableItem>().Setup(piece.correctZoneId);
             }
         }
 

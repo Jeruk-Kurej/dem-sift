@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 45089756}
   - component: {fileID: 45089759}
   m_Layer: 5
-  m_Name: Button_Batal
+  m_Name: Button_Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 97601708}
   - component: {fileID: 97601711}
   m_Layer: 5
-  m_Name: Button_Pengetahuan
+  m_Name: Button_Knowledge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 107041462}
   - component: {fileID: 107041465}
   m_Layer: 5
-  m_Name: Button_Tutup
+  m_Name: Button_Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 133210215}
   - component: {fileID: 133210218}
   m_Layer: 5
-  m_Name: Button_Tutup
+  m_Name: Button_Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3791,7 +3791,7 @@ GameObject:
   - component: {fileID: 465689566}
   - component: {fileID: 465689569}
   m_Layer: 5
-  m_Name: Button_Ya
+  m_Name: Button_Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 617470886}
   - component: {fileID: 617470889}
   m_Layer: 5
-  m_Name: ButtonPelatihan
+  m_Name: Button_Training
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4923,7 +4923,7 @@ GameObject:
   - component: {fileID: 629415290}
   - component: {fileID: 629415293}
   m_Layer: 5
-  m_Name: Button_Mulai
+  m_Name: Button_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5568,7 +5568,7 @@ GameObject:
   - component: {fileID: 702456282}
   - component: {fileID: 702456285}
   m_Layer: 5
-  m_Name: Button_Batal
+  m_Name: Button_Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6540,7 +6540,7 @@ GameObject:
   - component: {fileID: 861284187}
   - component: {fileID: 861284190}
   m_Layer: 5
-  m_Name: Button_BukaFolder
+  m_Name: Button_OpenFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8337,7 +8337,7 @@ GameObject:
   - component: {fileID: 1278244627}
   - component: {fileID: 1278244630}
   m_Layer: 5
-  m_Name: Button_Kembali
+  m_Name: Button_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

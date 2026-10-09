@@ -5,9 +5,9 @@ namespace DEMSIFT.Puzzle
 {
     public class DropZone : MonoBehaviour, IDropHandler
     {
-        public string zoneId;
-        public int capacity = 1;
-        public PuzzleController puzzleController;
+        [SerializeField] private string zoneId;
+        [SerializeField] private int capacity = 1;
+        [SerializeField] private PuzzleController puzzleController;
 
         private int filledCount;
 
@@ -19,7 +19,7 @@ namespace DEMSIFT.Puzzle
 
             if (item == null || item.IsPlaced) return;
 
-            if (filledCount < capacity && item.correctZoneId == zoneId)
+            if (filledCount < capacity && item.CorrectZoneId == zoneId)
             {
                 item.LockIntoZone(transform);
                 filledCount++;

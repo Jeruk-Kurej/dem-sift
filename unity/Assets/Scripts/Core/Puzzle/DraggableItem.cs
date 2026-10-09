@@ -6,9 +6,6 @@ namespace DEMSIFT.Puzzle
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
     public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public string pieceId;
-        public string correctZoneId;
-
         private RectTransform rectTransform;
         private CanvasGroup canvasGroup;
         private Canvas rootCanvas;
@@ -16,6 +13,7 @@ namespace DEMSIFT.Puzzle
         private Vector2 startAnchoredPosition;
         private bool isPlaced;
 
+        public string CorrectZoneId { get; private set; }
         public bool IsPlaced => isPlaced;
 
         private void Awake()
@@ -23,6 +21,12 @@ namespace DEMSIFT.Puzzle
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             rootCanvas = GetComponentInParent<Canvas>();
+        }
+
+        // --- Called by PuzzleController ---
+        public void Setup(string correctZoneId)
+        {
+            CorrectZoneId = correctZoneId;
         }
 
         // --- Drag lifecycle ---

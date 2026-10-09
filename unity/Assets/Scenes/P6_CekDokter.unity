@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 1188720850}
   - component: {fileID: 1188720853}
   m_Layer: 5
-  m_Name: Button_Jawab
+  m_Name: Button_Submit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
