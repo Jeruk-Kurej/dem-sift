@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DEMSIFT.Core;
 using DEMSIFT.Data;
 using DEMSIFT.Player;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace DEMSIFT.Leaderboard
         private void Rebuild()
         {
             gameObject.SetActive(true);
+            AudioPlayer.PlaySound(SoundEffect.Leaderboard);
 
             foreach (Transform oldRow in scrollRect.content)
             {

@@ -1,3 +1,4 @@
+using DEMSIFT.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,11 +24,13 @@ namespace DEMSIFT.Puzzle
             {
                 item.LockIntoZone(transform);
                 filledCount++;
+                AudioPlayer.PlaySound(SoundEffect.Correct);
                 puzzleController.NotifyCorrectPlacement();
             }
             else
             {
                 Vector3 dropPosition = item.transform.position;
+                AudioPlayer.PlaySound(SoundEffect.WrongDrop);
                 item.ReturnToTray();
                 puzzleController.NotifyWrongPlacement(dropPosition);
             }

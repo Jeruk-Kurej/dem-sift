@@ -1,3 +1,4 @@
+using DEMSIFT.Core;
 using TMPro;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ namespace DEMSIFT.Scoring
             correctIcon.SetActive(isCorrect);
             wrongIcon.SetActive(!isCorrect);
             gameObject.SetActive(true);
+            AudioPlayer.PlaySound(isCorrect ? SoundEffect.PopupCorrect : SoundEffect.PopupWrong);
         }
     }
 }

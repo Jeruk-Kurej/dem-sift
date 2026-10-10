@@ -3,23 +3,23 @@ using DEMSIFT.Core;
 
 namespace DEMSIFT.UI
 {
-    public class HandTrackingToggle : SettingToggle
+    public class SoundToggle : SettingToggle
     {
-        protected override bool IsEnabled => HandTrackingSetting.IsEnabled;
+        protected override bool IsEnabled => AudioSetting.IsEnabled;
 
         protected override void ToggleSetting()
         {
-            HandTrackingSetting.Toggle();
+            AudioSetting.Toggle();
         }
 
         protected override void Subscribe(Action<bool> handler)
         {
-            HandTrackingSetting.Changed += handler;
+            AudioSetting.Changed += handler;
         }
 
         protected override void Unsubscribe(Action<bool> handler)
         {
-            HandTrackingSetting.Changed -= handler;
+            AudioSetting.Changed -= handler;
         }
     }
 }

@@ -1,3 +1,4 @@
+using DEMSIFT.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -34,6 +35,7 @@ namespace DEMSIFT.Puzzle
         {
             if (isPlaced) return;
 
+            AudioPlayer.PlaySound(SoundEffect.Pickup);
             startParent = transform.parent;
             startAnchoredPosition = rectTransform.anchoredPosition;
             canvasGroup.blocksRaycasts = false;
