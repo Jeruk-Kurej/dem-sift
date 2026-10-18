@@ -20,7 +20,13 @@ namespace DEMSIFT.Puzzle
 
             if (item == null || item.IsPlaced) return;
 
-            if (filledCount < capacity && item.CorrectZoneId == zoneId)
+            if (filledCount >= capacity)
+            {
+                item.ReturnToTray();
+                return;
+            }
+
+            if (item.CorrectZoneId == zoneId)
             {
                 item.LockIntoZone(transform);
                 filledCount++;
