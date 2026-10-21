@@ -103,81 +103,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &2740264353631830605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 963653137279383133}
-  - component: {fileID: 3089081647177664024}
-  - component: {fileID: 5165911654757310322}
-  m_Layer: 5
-  m_Name: Ring
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &963653137279383133
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740264353631830605}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6805519093161575150}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 72, y: 72}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3089081647177664024
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740264353631830605}
-  m_CullTransparentMesh: 1
---- !u!114 &5165911654757310322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2740264353631830605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.49, g: 0.36, b: 0.85, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 7345718708154816498, guid: 8326778adb8e74486ba07ae42fd031a9, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 0
-  m_FillClockwise: 1
-  m_FillOrigin: 2
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6131905577946023211
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8074170683006419251}
   - component: {fileID: 1630157707522066398}
+  - component: {fileID: 6413235890893629394}
   m_Layer: 0
   m_Name: HandTrackingRig
   m_TagString: Untagged
@@ -275,7 +201,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.HandTracking.HandTrackingRig
   cursorCanvas: {fileID: 1060215679515106981}
   virtualMouse: {fileID: 3345578634659201220}
-  dwellClick: {fileID: 7789998270586789046}
+  restartAfterSeconds: 0.5
+--- !u!114 &6413235890893629394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551207351823021213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a952ba52135244e3f8304dbf1ffd076e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.HandTracking.HandPointerMode
 --- !u!1 &7474288551085712879
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +227,7 @@ GameObject:
   - component: {fileID: 5527739682969079102}
   - component: {fileID: 7200464621015877642}
   - component: {fileID: 3345578634659201220}
-  - component: {fileID: 7789998270586789046}
+  - component: {fileID: 5411979869812818646}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -308,8 +246,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963653137279383133}
+  m_Children: []
   m_Father: {fileID: 65171057055047128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -369,8 +306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mirrorX: 0
   smoothing: 12
-  progressRing: {fileID: 0}
-  holdSeconds: 1.5
   pinchOn: 0.25
   pinchOff: 0.4
 --- !u!114 &3345578634659201220
@@ -386,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.HandTracking.HandVirtualMouse
   handCursor: {fileID: 7200464621015877642}
---- !u!114 &7789998270586789046
+--- !u!114 &5411979869812818646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -395,13 +330,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7474288551085712879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29dc47e30803044c8a1d6d8417ef5c29, type: 3}
+  m_Script: {fileID: 11500000, guid: 892c15b9379d14c19ab279ac1c31f5a1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.HandTracking.HandDwellClick
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.HandTracking.HandCursorVisual
   handCursor: {fileID: 7200464621015877642}
-  progressRing: {fileID: 5165911654757310322}
-  holdSeconds: 0.8
-  leaveGraceSeconds: 0.3
+  idleColor: {r: 0.49, g: 0.36, b: 0.85, a: 0.35}
+  pinchColor: {r: 0.49, g: 0.36, b: 0.85, a: 0.85}
+  pinchScale: 0.7
+  animationSpeed: 20
 --- !u!1001 &3383786606336815319
 PrefabInstance:
   m_ObjectHideFlags: 0

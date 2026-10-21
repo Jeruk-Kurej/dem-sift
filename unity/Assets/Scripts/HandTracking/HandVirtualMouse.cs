@@ -11,11 +11,13 @@ namespace DEMSIFT.HandTracking
         private Mouse mouse;
         private Vector2 lastPosition;
         private bool hasLastPosition;
+        private bool isPressed;
 
         private void OnEnable()
         {
             mouse = InputSystem.AddDevice<Mouse>("HandMouse");
             hasLastPosition = false;
+            isPressed = false;
         }
 
         private void OnDisable()
@@ -28,20 +30,29 @@ namespace DEMSIFT.HandTracking
         {
             if (mouse == null || handCursor == null) return;
 
-            bool hasHand = handCursor.HasHand;
-            Vector2 position = hasHand ? handCursor.ScreenPosition : (hasLastPosition ? lastPosition : Vector2.zero);
-            bool isPressed = hasHand && handCursor.IsPinching;
+            if (!handCursor.HasHand)
+            {
+                if (isPressed) Send(lastPosition, false);
+                return;
+            }
 
+            Send(handCursor.ScreenPosition, handCursor.IsPinching);
+        }
+
+        // --- Device state ---
+        private void Send(Vector2 position, bool pressed)
+        {
             MouseState state = new MouseState
             {
                 position = position,
                 delta = hasLastPosition ? position - lastPosition : Vector2.zero,
-            }.WithButton(MouseButton.Left, isPressed);
+            }.WithButton(MouseButton.Left, pressed);
 
             InputState.Change(mouse, state);
 
             lastPosition = position;
             hasLastPosition = true;
+            isPressed = pressed;
         }
     }
 }

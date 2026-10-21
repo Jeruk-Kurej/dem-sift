@@ -9,7 +9,6 @@ namespace DEMSIFT.HandTracking
     {
         [SerializeField] private GameObject cursorCanvas;
         [SerializeField] private HandVirtualMouse virtualMouse;
-        [SerializeField] private HandDwellClick dwellClick;
 
         [Header("Camera watchdog")]
         [Tooltip("Seconds the camera may stay stopped before hand tracking restarts")]
@@ -91,7 +90,6 @@ namespace DEMSIFT.HandTracking
         {
             if (cursorCanvas != null) cursorCanvas.SetActive(isEnabled);
             if (virtualMouse != null) virtualMouse.enabled = isEnabled;
-            if (dwellClick != null) dwellClick.enabled = isEnabled;
         }
 
         // --- Play mode without domain reload ---
