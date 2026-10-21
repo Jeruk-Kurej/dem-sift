@@ -305,7 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirrorX: 0
-  smoothing: 12
+  minCutoff: 1
+  beta: 8
   pinchOn: 0.25
   pinchOff: 0.4
 --- !u!114 &3345578634659201220

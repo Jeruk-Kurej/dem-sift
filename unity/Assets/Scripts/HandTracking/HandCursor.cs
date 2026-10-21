@@ -7,7 +7,10 @@ namespace DEMSIFT.HandTracking
     {
         [Header("Movement")]
         [SerializeField] private bool mirrorX = true;
-        [SerializeField, Range(1f, 30f)] private float smoothing = 12f;
+        [Tooltip("Smoothing while the hand is still, in Hz. Lower is steadier but slower to settle")]
+        [SerializeField, Range(0.1f, 5f)] private float minCutoff = 1f;
+        [Tooltip("How quickly smoothing drops while the hand moves. Higher follows fast moves with less delay")]
+        [SerializeField, Range(0f, 30f)] private float beta = 8f;
 
         [Header("Pinch")]
         [Tooltip("Pinch starts when the finger distance ratio drops below this value")]
@@ -15,6 +18,7 @@ namespace DEMSIFT.HandTracking
         [Tooltip("Pinch ends when the finger distance ratio rises above this value")]
         [SerializeField] private float pinchOff = 0.4f;
 
+        private readonly OneEuroFilter filter = new OneEuroFilter();
         private Graphic graphic;
         private Vector2 screenPosition;
         private bool hasHand;
@@ -35,6 +39,7 @@ namespace DEMSIFT.HandTracking
             {
                 hasHand = false;
                 isPinching = false;
+                filter.Reset();
                 SetVisible(false);
                 return;
             }
@@ -48,10 +53,9 @@ namespace DEMSIFT.HandTracking
         {
             if (mirrorX) x = 1f - x;
 
-            Vector2 target = new Vector2(Mathf.Clamp01(x) * Screen.width, (1f - Mathf.Clamp01(y)) * Screen.height);
-            screenPosition = hasHand
-                ? Vector2.Lerp(screenPosition, target, 1f - Mathf.Exp(-smoothing * Time.unscaledDeltaTime))
-                : target;
+            Vector2 sample = new Vector2(Mathf.Clamp01(x), 1f - Mathf.Clamp01(y));
+            Vector2 smoothed = filter.Filter(sample, Time.unscaledDeltaTime, minCutoff, beta);
+            screenPosition = new Vector2(smoothed.x * Screen.width, smoothed.y * Screen.height);
             hasHand = true;
 
             transform.position = new Vector3(screenPosition.x, screenPosition.y, 0f);
