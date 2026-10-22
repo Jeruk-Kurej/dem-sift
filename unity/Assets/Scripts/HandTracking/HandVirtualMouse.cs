@@ -15,12 +15,17 @@ namespace DEMSIFT.HandTracking
 
         private void OnEnable()
         {
-            mouse = InputSystem.AddDevice<Mouse>("HandMouse");
+            if (mouse == null) mouse = InputSystem.AddDevice<Mouse>("HandMouse");
             hasLastPosition = false;
             isPressed = false;
         }
 
         private void OnDisable()
+        {
+            if (isPressed) Send(lastPosition, false);
+        }
+
+        private void OnDestroy()
         {
             if (mouse != null && mouse.added) InputSystem.RemoveDevice(mouse);
             mouse = null;

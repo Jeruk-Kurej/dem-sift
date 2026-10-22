@@ -39,13 +39,13 @@ namespace DEMSIFT.HandTracking
         {
             if (instance != this) return;
 
-            HandTrackingSetting.Changed += Apply;
-            Apply(HandTrackingSetting.IsEnabled);
+            HandTrackingSetting.Changed += OnSettingChanged;
+            SetCursorActive(HandTrackingSetting.IsEnabled);
         }
 
         private void OnDisable()
         {
-            HandTrackingSetting.Changed -= Apply;
+            HandTrackingSetting.Changed -= OnSettingChanged;
         }
 
         private void OnDestroy()
@@ -63,6 +63,8 @@ namespace DEMSIFT.HandTracking
         // --- Camera watchdog ---
         private void WatchCamera()
         {
+            if (!HandTrackingSetting.IsEnabled) return;
+
             ImageSource source = ImageSourceProvider.ImageSource;
             if (source == null) return;
 
@@ -86,7 +88,18 @@ namespace DEMSIFT.HandTracking
         }
 
         // --- Setting ---
-        private void Apply(bool isEnabled)
+        private void OnSettingChanged(bool isEnabled)
+        {
+            SetCursorActive(isEnabled);
+            cameraWasRunning = false;
+            stoppedTime = 0f;
+
+            if (runner == null) return;
+            if (isEnabled) runner.Play();
+            else runner.Stop();
+        }
+
+        private void SetCursorActive(bool isEnabled)
         {
             if (cursorCanvas != null) cursorCanvas.SetActive(isEnabled);
             if (virtualMouse != null) virtualMouse.enabled = isEnabled;

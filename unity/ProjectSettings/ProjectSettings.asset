@@ -328,7 +328,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: Kamera dipakai untuk mendeteksi gerakan tangan saat bermain. Gambar kamera tidak disimpan atau dikirim.
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
