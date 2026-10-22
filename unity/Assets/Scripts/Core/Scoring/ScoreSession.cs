@@ -8,6 +8,7 @@ namespace DEMSIFT.Scoring
 
         private static readonly int[] scores = new int[SoalCount];
         private static readonly int[] wrongAttempts = new int[SoalCount];
+        private static bool leaderboardPending;
 
         public static int Total
         {
@@ -39,6 +40,14 @@ namespace DEMSIFT.Scoring
         {
             scores[soalNumber - 1] = score;
             wrongAttempts[soalNumber - 1] = wrongAttemptCount;
+            if (IsComplete) leaderboardPending = true;
+        }
+
+        public static bool TakeLeaderboardPending()
+        {
+            bool pending = leaderboardPending;
+            leaderboardPending = false;
+            return pending;
         }
 
         // --- New player, and play mode without domain reload ---
@@ -47,6 +56,7 @@ namespace DEMSIFT.Scoring
         {
             System.Array.Clear(scores, 0, SoalCount);
             System.Array.Clear(wrongAttempts, 0, SoalCount);
+            leaderboardPending = false;
         }
     }
 }

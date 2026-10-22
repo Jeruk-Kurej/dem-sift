@@ -46,6 +46,7 @@ namespace DEMSIFT.Core
         {
             Music.Menu => "bgm_menu",
             Music.Soal => "bgm_soal",
+            _ => throw new System.ArgumentOutOfRangeException(nameof(music), music, null),
         };
 
         private static string SoundFileName(SoundEffect soundEffect) => soundEffect switch
@@ -57,6 +58,7 @@ namespace DEMSIFT.Core
             SoundEffect.PopupCorrect => "sfx_popup_correct",
             SoundEffect.PopupWrong => "sfx_popup_wrong",
             SoundEffect.Leaderboard => "sfx_leaderboard",
+            _ => throw new System.ArgumentOutOfRangeException(nameof(soundEffect), soundEffect, null),
         };
 
         // --- Play mode without domain reload ---

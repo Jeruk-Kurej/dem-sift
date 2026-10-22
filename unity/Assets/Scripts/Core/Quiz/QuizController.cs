@@ -67,6 +67,8 @@ namespace DEMSIFT.Quiz
         // --- Answering ---
         private void Select(int optionIndex)
         {
+            if (resultPopup.IsOpen) return;
+
             selectedIndex = optionIndex;
             submitButton.interactable = true;
 
@@ -78,7 +80,7 @@ namespace DEMSIFT.Quiz
 
         private void Submit()
         {
-            if (selectedIndex < 0) return;
+            if (selectedIndex < 0 || resultPopup.IsOpen) return;
 
             if (selectedIndex == question.correctAnswerIndex)
             {

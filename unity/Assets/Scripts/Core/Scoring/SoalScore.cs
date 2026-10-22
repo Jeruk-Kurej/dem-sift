@@ -13,6 +13,7 @@ namespace DEMSIFT.Scoring
         [SerializeField] private ResultPopup resultPopup;
 
         private int wrongAttempts;
+        private bool isCompleted;
 
         public event Action<int> Changed;
         public event Action Completed;
@@ -22,6 +23,8 @@ namespace DEMSIFT.Scoring
         // --- Called by the quiz and puzzle controllers ---
         public int RegisterWrongAttempt()
         {
+            if (isCompleted) return 0;
+
             int before = Current;
             wrongAttempts++;
 
@@ -32,6 +35,9 @@ namespace DEMSIFT.Scoring
 
         public void Complete()
         {
+            if (isCompleted) return;
+
+            isCompleted = true;
             ScoreSession.Record(soalNumber, Current, wrongAttempts);
             resultPopup.ShowCorrect(Current);
             Completed?.Invoke();

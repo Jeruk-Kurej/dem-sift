@@ -11,11 +11,13 @@ namespace DEMSIFT.Data
     {
         private const string FolderName = "Hasil";
         private const string FileName = "hasil-pengetahuan.txt";
+        private const string BackupFileName = "hasil-pengetahuan_cadangan.txt";
         private const string ExportFolderName = "Export";
         private const string ArchiveFolderName = "Arsip";
         private const string Separator = "\t";
         private const string TimestampFormat = "yyyy-MM-dd HH:mm:ss";
         private const string FileTimestampFormat = "yyyy-MM-dd_HH-mm-ss";
+        private static readonly char[] FormulaStarts = { '=', '+', '-', '@' };
         private const int NameColumn = 1;
         private const int ClassColumn = 2;
         private const int ColumnCount = 3 + ScoreSession.SoalCount * 2 + 1;
@@ -34,14 +36,22 @@ namespace DEMSIFT.Data
 
         public static bool Exists => File.Exists(FilePath);
 
+        private static string BackupFilePath => Path.Combine(FolderPath, BackupFileName);
+
         public static void AppendCurrentPlayer()
         {
-            if (!Exists)
-            {
-                File.WriteAllText(FilePath, Header() + Environment.NewLine);
-            }
+            string line = CurrentPlayerLine() + Environment.NewLine;
 
-            File.AppendAllText(FilePath, CurrentPlayerLine() + Environment.NewLine);
+            try
+            {
+                if (!Exists) File.WriteAllText(FilePath, Header() + Environment.NewLine);
+                File.AppendAllText(FilePath, line);
+            }
+            catch (IOException exception)
+            {
+                Debug.LogError($"[ResultFile] Main file is locked, saving to backup: {exception.Message}");
+                File.AppendAllText(BackupFilePath, line);
+            }
         }
 
         public static List<PlayerResult> ReadAll()
@@ -49,7 +59,16 @@ namespace DEMSIFT.Data
             var results = new List<PlayerResult>();
             if (!Exists) return results;
 
-            string[] lines = File.ReadAllLines(FilePath);
+            string[] lines;
+            try
+            {
+                lines = File.ReadAllLines(FilePath);
+            }
+            catch (IOException exception)
+            {
+                Debug.LogError($"[ResultFile] Could not read results: {exception.Message}");
+                return results;
+            }
             for (int i = 1; i < lines.Length; i++)
             {
                 string[] columns = lines[i].Split(Separator);
@@ -78,7 +97,7 @@ namespace DEMSIFT.Data
             foreach (string line in File.ReadAllLines(FilePath))
             {
                 var fields = new List<string>();
-                foreach (string field in line.Split(Separator)) fields.Add($"\"{field.Replace("\"", "\"\"")}\"");
+                foreach (string field in line.Split(Separator)) fields.Add(CsvField(field));
                 csvLines.Add(string.Join(",", fields));
             }
 
@@ -116,6 +135,12 @@ namespace DEMSIFT.Data
             for (int soal = 1; soal <= ScoreSession.SoalCount; soal++) columns.Add(ScoreSession.WrongAttemptsOf(soal).ToString());
             columns.Add(ScoreSession.Total.ToString());
             return string.Join(Separator, columns);
+        }
+
+        private static string CsvField(string field)
+        {
+            if (field.Length > 0 && Array.IndexOf(FormulaStarts, field[0]) >= 0) field = "'" + field;
+            return $"\"{field.Replace("\"", "\"\"")}\"";
         }
 
         private static string Clean(string value)

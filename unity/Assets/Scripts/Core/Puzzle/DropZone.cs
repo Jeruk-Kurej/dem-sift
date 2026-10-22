@@ -18,7 +18,7 @@ namespace DEMSIFT.Puzzle
                 ? eventData.pointerDrag.GetComponent<DraggableItem>()
                 : null;
 
-            if (item == null || item.IsPlaced) return;
+            if (item == null || item.IsPlaced || !item.IsDraggedBy(eventData.pointerId)) return;
 
             if (filledCount >= capacity)
             {

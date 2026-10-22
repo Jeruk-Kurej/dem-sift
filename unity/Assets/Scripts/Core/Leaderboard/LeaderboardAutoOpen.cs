@@ -9,7 +9,7 @@ namespace DEMSIFT.Leaderboard
 
         private void Start()
         {
-            if (ScoreSession.IsComplete) panel.OpenOnCurrentPlayer();
+            if (ScoreSession.TakeLeaderboardPending()) panel.OpenOnCurrentPlayer();
         }
     }
 }

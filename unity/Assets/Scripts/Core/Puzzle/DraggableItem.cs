@@ -13,9 +13,12 @@ namespace DEMSIFT.Puzzle
         private Transform startParent;
         private Vector2 startAnchoredPosition;
         private bool isPlaced;
+        private bool isDragging;
+        private int dragPointerId;
 
         public string CorrectZoneId { get; private set; }
         public bool IsPlaced => isPlaced;
+        public bool IsDraggedBy(int pointerId) => isDragging && dragPointerId == pointerId;
 
         private void Awake()
         {
@@ -33,9 +36,11 @@ namespace DEMSIFT.Puzzle
         // --- Drag lifecycle ---
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (isPlaced) return;
+            if (isPlaced || isDragging) return;
 
             AudioPlayer.PlaySound(SoundEffect.Pickup);
+            isDragging = true;
+            dragPointerId = eventData.pointerId;
             startParent = transform.parent;
             startAnchoredPosition = rectTransform.anchoredPosition;
             canvasGroup.blocksRaycasts = false;
@@ -43,15 +48,16 @@ namespace DEMSIFT.Puzzle
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (isPlaced) return;
+            if (isPlaced || !IsDraggedBy(eventData.pointerId)) return;
 
             rectTransform.anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (isPlaced) return;
+            if (isPlaced || !IsDraggedBy(eventData.pointerId)) return;
 
+            isDragging = false;
             canvasGroup.blocksRaycasts = true;
 
             if (transform.parent == startParent)

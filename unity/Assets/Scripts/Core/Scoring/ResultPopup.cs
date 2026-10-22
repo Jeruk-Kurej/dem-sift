@@ -30,6 +30,8 @@ namespace DEMSIFT.Scoring
             Show(wrongMessage, lostPoints > 0 ? $"-{lostPoints}" : string.Empty, false);
         }
 
+        public bool IsOpen => gameObject.activeSelf;
+
         public void Close()
         {
             gameObject.SetActive(false);
