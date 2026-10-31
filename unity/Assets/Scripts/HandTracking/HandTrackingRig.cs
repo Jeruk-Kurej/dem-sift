@@ -103,8 +103,20 @@ namespace DEMSIFT.HandTracking
                 return;
             }
 
-            runner.Stop();
+            StopRunner();
             ReleaseCamera();
+        }
+
+        private void StopRunner()
+        {
+            try
+            {
+                runner.Stop();
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.LogWarning("[HandTracking] Hand tracking never started, so there is nothing to stop.");
+            }
         }
 
         // --- Camera release ---
