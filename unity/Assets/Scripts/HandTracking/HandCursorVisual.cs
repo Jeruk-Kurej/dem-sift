@@ -6,14 +6,31 @@ namespace DEMSIFT.HandTracking
     [RequireComponent(typeof(Image))]
     public class HandCursorVisual : MonoBehaviour
     {
+        private enum State { Idle, Hover, Pinch }
+
         [SerializeField] private HandCursor handCursor;
-        [SerializeField] private Color idleColor = new Color(0.49f, 0.36f, 0.85f, 0.35f);
-        [SerializeField] private Color pinchColor = new Color(0.49f, 0.36f, 0.85f, 0.85f);
-        [SerializeField, Range(0.4f, 1f)] private float pinchScale = 0.7f;
+        [SerializeField] private HandCursorHover hover;
+
+        [Header("Sprites")]
+        [SerializeField] private Sprite idleSprite;
+        [SerializeField] private Sprite hoverSprite;
+        [SerializeField] private Sprite pinchSprite;
+
+        [Header("Look")]
+        [SerializeField, Range(0f, 1f)] private float idleAlpha = 0.75f;
+        [SerializeField] private float idleScale = 0.8f;
+        [SerializeField] private float hoverScale = 1.1f;
+        [SerializeField] private float pinchScale = 0.75f;
+
+        [Header("Motion")]
+        [SerializeField, Range(0f, 0.2f)] private float pulseAmount = 0.05f;
+        [SerializeField] private float pulseSpeed = 4f;
         [SerializeField] private float animationSpeed = 20f;
 
         private Image image;
+        private State state = State.Pinch;
         private float scale = 1f;
+        private float alpha = 1f;
 
         private void Awake()
         {
@@ -24,12 +41,47 @@ namespace DEMSIFT.HandTracking
         {
             if (handCursor == null) return;
 
-            bool isPinching = handCursor.IsPinching;
-            float blend = 1f - Mathf.Exp(-animationSpeed * Time.unscaledDeltaTime);
+            SetState(CurrentState());
 
-            image.color = Color.Lerp(image.color, isPinching ? pinchColor : idleColor, blend);
-            scale = Mathf.Lerp(scale, isPinching ? pinchScale : 1f, blend);
+            float blend = 1f - Mathf.Exp(-animationSpeed * Time.unscaledDeltaTime);
+            scale = Mathf.Lerp(scale, TargetScale(), blend);
+            alpha = Mathf.Lerp(alpha, state == State.Idle ? idleAlpha : 1f, blend);
+
             transform.localScale = new Vector3(scale, scale, 1f);
+            image.color = new Color(1f, 1f, 1f, alpha);
+        }
+
+        // --- State ---
+        private State CurrentState()
+        {
+            if (handCursor.IsPinching) return State.Pinch;
+            return hover != null && hover.IsHovering ? State.Hover : State.Idle;
+        }
+
+        private void SetState(State newState)
+        {
+            if (newState == state) return;
+
+            state = newState;
+            image.sprite = state switch
+            {
+                State.Hover => hoverSprite,
+                State.Pinch => pinchSprite,
+                _ => idleSprite,
+            };
+        }
+
+        private float TargetScale()
+        {
+            float baseScale = state switch
+            {
+                State.Hover => hoverScale,
+                State.Pinch => pinchScale,
+                _ => idleScale,
+            };
+
+            if (state == State.Pinch) return baseScale;
+            return baseScale * (1f + pulseAmount * Mathf.Sin(Time.unscaledTime * pulseSpeed));
         }
     }
 }

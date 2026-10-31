@@ -11,6 +11,8 @@ namespace DEMSIFT.HandTracking
         [SerializeField, Range(0.1f, 5f)] private float minCutoff = 1f;
         [Tooltip("How quickly smoothing drops while the hand moves. Higher follows fast moves with less delay")]
         [SerializeField, Range(0f, 30f)] private float beta = 8f;
+        [Tooltip("Share of the camera view that spans the whole screen. Below 1 lets the cursor reach the screen edges without the hand reaching the camera edges")]
+        [SerializeField, Range(0.5f, 1f)] private float reach = 0.8f;
 
         [Header("Pinch")]
         [Tooltip("Pinch starts when the finger distance ratio drops below this value")]
@@ -54,6 +56,7 @@ namespace DEMSIFT.HandTracking
             if (mirrorX) x = 1f - x;
 
             Vector2 sample = new Vector2(Mathf.Clamp01(x), 1f - Mathf.Clamp01(y));
+            sample = Vector2.Min(Vector2.Max((sample - Vector2.one * 0.5f) / reach + Vector2.one * 0.5f, Vector2.zero), Vector2.one);
             Vector2 smoothed = filter.Filter(sample, Time.unscaledDeltaTime, minCutoff, beta);
             screenPosition = new Vector2(smoothed.x * Screen.width, smoothed.y * Screen.height);
             hasHand = true;

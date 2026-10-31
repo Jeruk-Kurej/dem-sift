@@ -84,6 +84,7 @@ namespace DEMSIFT.HandTracking
             HandCursorData.Publish(false, 0f, 0f, 1f);
             cameraWasRunning = false;
             stoppedTime = 0f;
+            ReleaseCamera();
             runner.Play();
         }
 
@@ -95,8 +96,25 @@ namespace DEMSIFT.HandTracking
             stoppedTime = 0f;
 
             if (runner == null) return;
-            if (isEnabled) runner.Play();
-            else runner.Stop();
+
+            if (isEnabled)
+            {
+                runner.Play();
+                return;
+            }
+
+            runner.Stop();
+            ReleaseCamera();
+        }
+
+        // --- Camera release ---
+        private static void ReleaseCamera()
+        {
+            foreach (WebCamTexture webCam in Resources.FindObjectsOfTypeAll<WebCamTexture>())
+            {
+                webCam.Stop();
+                Destroy(webCam);
+            }
         }
 
         private void SetCursorActive(bool isEnabled)
