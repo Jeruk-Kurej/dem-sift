@@ -6,6 +6,7 @@ namespace DEMSIFT.Puzzle
 {
     public class DropZone : MonoBehaviour, IDropHandler
     {
+        [Tooltip("Zones that share an id accept the same pieces, so they can be filled in any order.")]
         [SerializeField] private string zoneId;
         [SerializeField] private int capacity = 1;
         [SerializeField] private PuzzleController puzzleController;

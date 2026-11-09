@@ -17,15 +17,15 @@ MonoBehaviour:
   - pieceId: gigi_sehat
     label: Gigi Sehat
     pieceSprite: {fileID: 21300000, guid: a89a223780cf54bf1924147b8a509380, type: 3}
-    correctZoneId: zone_gigi_sehat
+    correctZoneId: zone_slot
   - pieceId: makanan
     label: Soda, permen, dan cokelat
     pieceSprite: {fileID: 21300000, guid: c9ca3f5252163425cb0772aaab796d61, type: 3}
-    correctZoneId: zone_makanan
+    correctZoneId: zone_slot
   - pieceId: bakteri
     label: Bakteri
     pieceSprite: {fileID: 21300000, guid: 1a7b6bb11fdc74dd58f260aa8b7b1a2b, type: 3}
-    correctZoneId: zone_bakteri
+    correctZoneId: zone_slot
   - pieceId: gigi_berlubang
     label: Gigi Berlubang
     pieceSprite: {fileID: 21300000, guid: 073c271f99e0a4110b8562df22acaabd, type: 3}

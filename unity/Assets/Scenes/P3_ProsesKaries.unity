@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 221284499}
   - component: {fileID: 221284498}
   m_Layer: 5
-  m_Name: DropZone_Bakteri
+  m_Name: DropZone_Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18008c0519e644afb6a5616b8f2163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Puzzle.DropZone
-  zoneId: zone_bakteri
+  zoneId: zone_slot
   capacity: 1
   puzzleController: {fileID: 1230374514}
 --- !u!114 &221284499
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 1212553562}
   - component: {fileID: 1212553561}
   m_Layer: 5
-  m_Name: DropZone_Makanan
+  m_Name: DropZone_Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18008c0519e644afb6a5616b8f2163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Puzzle.DropZone
-  zoneId: zone_makanan
+  zoneId: zone_slot
   capacity: 1
   puzzleController: {fileID: 1230374514}
 --- !u!114 &1212553562
@@ -1349,6 +1349,138 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 473.47998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135623743737117178, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 265.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298256960560461573, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284552470
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006616096294974749, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4150100831832510511, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
       propertyPath: m_text
       value: Bagaimana Gigi bisa Berlubang?
@@ -1496,7 +1628,7 @@ GameObject:
   - component: {fileID: 1792385712}
   - component: {fileID: 1792385711}
   m_Layer: 5
-  m_Name: DropZone_GigiSehat
+  m_Name: DropZone_Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1514,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18008c0519e644afb6a5616b8f2163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Puzzle.DropZone
-  zoneId: zone_gigi_sehat
+  zoneId: zone_slot
   capacity: 1
   puzzleController: {fileID: 1230374514}
 --- !u!114 &1792385712
