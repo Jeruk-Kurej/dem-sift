@@ -4,7 +4,7 @@ namespace DEMSIFT.Core
 {
     public class SceneMusic : MonoBehaviour
     {
-        [SerializeField] private Music music = Music.Soal;
+        [SerializeField] private Music music = Music.Menu;
 
         private void Start()
         {

@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3960d80ad66624a3da91d15ac2fbe68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Core.SceneMusic
-  music: 1
+  music: 0
 --- !u!114 &731353407123824769
 MonoBehaviour:
   m_ObjectHideFlags: 0

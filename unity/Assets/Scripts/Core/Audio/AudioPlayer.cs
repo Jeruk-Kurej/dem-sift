@@ -45,7 +45,6 @@ namespace DEMSIFT.Core
         private static string MusicFileName(Music music) => music switch
         {
             Music.Menu => "bgm_menu",
-            Music.Soal => "bgm_soal",
             _ => throw new System.ArgumentOutOfRangeException(nameof(music), music, null),
         };
 
