@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DEMSIFT.Player;
-using DEMSIFT.Scoring;
 using UnityEngine;
 
 namespace DEMSIFT.Data
 {
-    public static class ResultFile
+    public class ResultFile
     {
         private const string FolderName = "Hasil";
-        private const string FileName = "hasil-pengetahuan.txt";
-        private const string BackupFileName = "hasil-pengetahuan_cadangan.txt";
         private const string ExportFolderName = "Export";
         private const string ArchiveFolderName = "Arsip";
         private const string Separator = "\t";
@@ -20,7 +17,21 @@ namespace DEMSIFT.Data
         private static readonly char[] FormulaStarts = { '=', '+', '-', '@' };
         private const int NameColumn = 1;
         private const int ClassColumn = 2;
-        private const int ColumnCount = 3 + ScoreSession.SoalCount * 2 + 1;
+
+        public static readonly ResultFile Pengetahuan = new("hasil-pengetahuan", new PengetahuanResultFormat());
+        public static readonly ResultFile Pelatihan = new("hasil-pelatihan", new PelatihanResultFormat());
+        public static readonly ResultFile[] All = { Pengetahuan, Pelatihan };
+
+        private readonly string baseName;
+        private readonly ResultFormat format;
+        private readonly int columnCount;
+
+        private ResultFile(string fileBaseName, ResultFormat resultFormat)
+        {
+            baseName = fileBaseName;
+            format = resultFormat;
+            columnCount = Header().Count;
+        }
 
         public static string FolderPath
         {
@@ -32,29 +43,31 @@ namespace DEMSIFT.Data
             }
         }
 
-        public static string FilePath => Path.Combine(FolderPath, FileName);
+        public string FileName => baseName + ".txt";
 
-        public static bool Exists => File.Exists(FilePath);
+        public string FilePath => Path.Combine(FolderPath, FileName);
 
-        private static string BackupFilePath => Path.Combine(FolderPath, BackupFileName);
+        public bool Exists => File.Exists(FilePath);
 
-        public static void AppendCurrentPlayer()
+        private string BackupFilePath => Path.Combine(FolderPath, baseName + "_cadangan.txt");
+
+        public void AppendCurrentPlayer()
         {
-            string line = CurrentPlayerLine() + Environment.NewLine;
+            string line = string.Join(Separator, CurrentPlayerColumns()) + Environment.NewLine;
 
             try
             {
-                if (!Exists) File.WriteAllText(FilePath, Header() + Environment.NewLine);
+                if (!Exists) File.WriteAllText(FilePath, string.Join(Separator, Header()) + Environment.NewLine);
                 File.AppendAllText(FilePath, line);
             }
             catch (IOException exception)
             {
-                Debug.LogError($"[ResultFile] Main file is locked, saving to backup: {exception.Message}");
+                Debug.LogError($"[ResultFile] {FileName} is locked, saving to backup: {exception.Message}");
                 File.AppendAllText(BackupFilePath, line);
             }
         }
 
-        public static List<PlayerResult> ReadAll()
+        public List<PlayerResult> ReadAll()
         {
             var results = new List<PlayerResult>();
             if (!Exists) return results;
@@ -66,14 +79,14 @@ namespace DEMSIFT.Data
             }
             catch (IOException exception)
             {
-                Debug.LogError($"[ResultFile] Could not read results: {exception.Message}");
+                Debug.LogError($"[ResultFile] Could not read {FileName}: {exception.Message}");
                 return results;
             }
             for (int i = 1; i < lines.Length; i++)
             {
                 string[] columns = lines[i].Split(Separator);
-                if (columns.Length != ColumnCount) continue;
-                if (!int.TryParse(columns[ColumnCount - 1], out int total)) continue;
+                if (columns.Length != columnCount) continue;
+                if (!int.TryParse(columns[columnCount - 1], out int total)) continue;
 
                 results.Add(new PlayerResult(columns[NameColumn], columns[ClassColumn], total));
             }
@@ -82,14 +95,14 @@ namespace DEMSIFT.Data
         }
 
         // --- Admin ---
-        public static string Archive()
+        public string Archive()
         {
             string archivePath = StampedPath(ArchiveFolderName, ".txt");
             File.Move(FilePath, Path.Combine(FolderPath, archivePath));
             return archivePath;
         }
 
-        public static string ExportCsv()
+        public string ExportCsv()
         {
             string csvPath = StampedPath(ExportFolderName, ".csv");
             var csvLines = new List<string>();
@@ -105,25 +118,24 @@ namespace DEMSIFT.Data
             return csvPath;
         }
 
-        private static string StampedPath(string subfolderName, string extension)
+        private string StampedPath(string subfolderName, string extension)
         {
             Directory.CreateDirectory(Path.Combine(FolderPath, subfolderName));
 
-            string stampedName = $"{Path.GetFileNameWithoutExtension(FileName)}_{DateTime.Now.ToString(FileTimestampFormat)}{extension}";
+            string stampedName = $"{baseName}_{DateTime.Now.ToString(FileTimestampFormat)}{extension}";
             return Path.Combine(subfolderName, stampedName);
         }
 
         // --- Line format ---
-        private static string Header()
+        private List<string> Header()
         {
             var columns = new List<string> { "Waktu", "Nama", "Kelas" };
-            for (int soal = 1; soal <= ScoreSession.SoalCount; soal++) columns.Add($"Skor Soal {soal}");
-            for (int soal = 1; soal <= ScoreSession.SoalCount; soal++) columns.Add($"Jumlah Salah Soal {soal}");
+            columns.AddRange(format.ScoreHeaders());
             columns.Add("Total Skor");
-            return string.Join(Separator, columns);
+            return columns;
         }
 
-        private static string CurrentPlayerLine()
+        private List<string> CurrentPlayerColumns()
         {
             var columns = new List<string>
             {
@@ -131,10 +143,9 @@ namespace DEMSIFT.Data
                 Clean(PlayerSession.PlayerName),
                 Clean(PlayerSession.ClassName)
             };
-            for (int soal = 1; soal <= ScoreSession.SoalCount; soal++) columns.Add(ScoreSession.ScoreOf(soal).ToString());
-            for (int soal = 1; soal <= ScoreSession.SoalCount; soal++) columns.Add(ScoreSession.WrongAttemptsOf(soal).ToString());
-            columns.Add(ScoreSession.Total.ToString());
-            return string.Join(Separator, columns);
+            columns.AddRange(format.CurrentScores());
+            columns.Add(format.CurrentTotal.ToString());
+            return columns;
         }
 
         private static string CsvField(string field)

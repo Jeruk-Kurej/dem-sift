@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 212689876}
   - component: {fileID: 212689875}
   - component: {fileID: 212689874}
+  - component: {fileID: 212689879}
   m_Layer: 0
   m_Name: Brushing
   m_TagString: Untagged
@@ -238,6 +239,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212689879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212689873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2b5323ffe8340a08f1de6e4d749da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.TrainingResultSaver
+  brushing: {fileID: 212689874}
 --- !u!1 &285177449
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,20 +13,37 @@ namespace DEMSIFT.Leaderboard
         [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private GameObject emptyMessage;
 
+        [Header("Tabs")]
+        [SerializeField] private LeaderboardTab pengetahuanTab;
+        [SerializeField] private LeaderboardTab pelatihanTab;
+
         private int rowCount;
         private int currentPlayerRow;
 
         // --- Called by buttons ---
         public void Open()
         {
-            Rebuild();
+            AudioPlayer.PlaySound(SoundEffect.Leaderboard);
+            ShowPengetahuan();
+        }
+
+        public void OpenOnCurrentPlayer(ResultFile file)
+        {
+            AudioPlayer.PlaySound(SoundEffect.Leaderboard);
+            Rebuild(file);
+            ScrollToRow(Mathf.Max(0, currentPlayerRow));
+        }
+
+        public void ShowPengetahuan()
+        {
+            Rebuild(ResultFile.Pengetahuan);
             ScrollToTop();
         }
 
-        public void OpenOnCurrentPlayer()
+        public void ShowPelatihan()
         {
-            Rebuild();
-            ScrollToRow(Mathf.Max(0, currentPlayerRow));
+            Rebuild(ResultFile.Pelatihan);
+            ScrollToTop();
         }
 
         public void Close()
@@ -40,10 +57,11 @@ namespace DEMSIFT.Leaderboard
         }
 
         // --- Rows ---
-        private void Rebuild()
+        private void Rebuild(ResultFile file)
         {
             gameObject.SetActive(true);
-            AudioPlayer.PlaySound(SoundEffect.Leaderboard);
+            pengetahuanTab.SetActive(file == ResultFile.Pengetahuan);
+            pelatihanTab.SetActive(file == ResultFile.Pelatihan);
 
             foreach (Transform oldRow in scrollRect.content)
             {
@@ -51,7 +69,7 @@ namespace DEMSIFT.Leaderboard
                 Destroy(oldRow.gameObject);
             }
 
-            List<PlayerResult> ranking = LeaderboardRanking.Build(ResultFile.ReadAll());
+            List<PlayerResult> ranking = LeaderboardRanking.Build(file.ReadAll());
             string currentPlayerKey = PlayerSession.HasPlayer
                 ? PlayerResult.KeyOf(PlayerSession.PlayerName, PlayerSession.ClassName)
                 : null;

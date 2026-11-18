@@ -503,7 +503,7 @@ MonoBehaviour:
   - {fileID: 1518688150}
   submitButton: {fileID: 686467901}
   clearWrongChoices: 1
-  soalScore: {fileID: 0}
+  soalScore: {fileID: 1784198354}
   resultPopup: {fileID: 476073520}
 --- !u!1 &639780489
 GameObject:
@@ -1303,6 +1303,53 @@ MonoBehaviour:
   answerButtonContainer: {fileID: 148274441}
   answerButtonPrefab: {fileID: 5075803117231708726, guid: 8088bfe5c400247c697639af90bc4cac, type: 3}
   selectedColor: {r: 0.851, g: 0.8, b: 0.969, a: 1}
+--- !u!1 &1784198353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784198355}
+  - component: {fileID: 1784198354}
+  m_Layer: 0
+  m_Name: SoalScore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1784198354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784198353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5e09584ea0b4565b074275b0935ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Scoring.SoalScore
+  target: 1
+  soalNumber: 1
+  resultPopup: {fileID: 476073520}
+--- !u!4 &1784198355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784198353}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1804615286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,3 +1876,4 @@ SceneRoots:
   - {fileID: 639780491}
   - {fileID: 317386929}
   - {fileID: 1287151585}
+  - {fileID: 1784198355}

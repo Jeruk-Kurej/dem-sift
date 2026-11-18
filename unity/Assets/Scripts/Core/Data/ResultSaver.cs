@@ -20,7 +20,7 @@ namespace DEMSIFT.Data
 
         private void Save()
         {
-            if (PlayerSession.HasPlayer) ResultFile.AppendCurrentPlayer();
+            if (PlayerSession.HasPlayer) ResultFile.Pengetahuan.AppendCurrentPlayer();
         }
     }
 }

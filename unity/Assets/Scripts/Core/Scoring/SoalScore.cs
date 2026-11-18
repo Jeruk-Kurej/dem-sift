@@ -3,12 +3,20 @@ using UnityEngine;
 
 namespace DEMSIFT.Scoring
 {
+    public enum ScoreTarget
+    {
+        Pengetahuan,
+        PelatihanPersiapan,
+    }
+
     public class SoalScore : MonoBehaviour
     {
         private const int StartScore = 100;
         private const int PenaltyPerWrongAttempt = 10;
         private const int MinScore = 10;
 
+        [SerializeField] private ScoreTarget target = ScoreTarget.Pengetahuan;
+        [Tooltip("Only used for Pengetahuan.")]
         [SerializeField] private int soalNumber = 1;
         [SerializeField] private ResultPopup resultPopup;
 
@@ -38,7 +46,8 @@ namespace DEMSIFT.Scoring
             if (isCompleted) return;
 
             isCompleted = true;
-            ScoreSession.Record(soalNumber, Current, wrongAttempts);
+            if (target == ScoreTarget.Pengetahuan) ScoreSession.Record(soalNumber, Current, wrongAttempts);
+            else TrainingSession.RecordPreparation(Current, wrongAttempts);
             resultPopup.ShowCorrect(Current);
             Completed?.Invoke();
         }

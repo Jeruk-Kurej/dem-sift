@@ -44,6 +44,7 @@ namespace DEMSIFT.Player
 
             PlayerSession.Begin(nameInput.text, SelectedLabel(gradeGroup));
             ScoreSession.Clear();
+            TrainingSession.Clear();
             sceneLoader.LoadScene(targetScene);
         }
 

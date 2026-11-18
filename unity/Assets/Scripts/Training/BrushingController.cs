@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DEMSIFT.Core;
@@ -36,16 +37,19 @@ namespace DEMSIFT.Training
         [SerializeField] private ResultPopup finishPopup;
 
         private readonly List<PlaqueZone> zones = new();
-        private float[] stepTimes;
         private int stepIndex = -1;
         private float stepStart;
         private bool finishingStep;
 
-        public IReadOnlyList<float> StepTimes => stepTimes;
+        public event Action Completed;
 
         private void Start()
         {
-            stepTimes = new float[steps.Length];
+            if (steps.Length != TrainingSession.StepCount)
+            {
+                Debug.LogWarning($"[Brushing] {steps.Length} steps assigned, but TrainingSession expects {TrainingSession.StepCount}.");
+            }
+
             StartStep(0);
         }
 
@@ -107,7 +111,10 @@ namespace DEMSIFT.Training
         {
             finishingStep = true;
             scrubber.Stop();
-            stepTimes[stepIndex] = Time.time - stepStart;
+            if (stepIndex < TrainingSession.StepCount)
+            {
+                TrainingSession.RecordStep(stepIndex + 1, Time.time - stepStart, steps[stepIndex].parTime);
+            }
 
             AudioPlayer.PlaySound(SoundEffect.Correct);
             FloatingText text = Instantiate(floatingTextPrefab, zoneLayer);
@@ -123,8 +130,14 @@ namespace DEMSIFT.Training
 
             yield return new WaitForSeconds(pauseBetweenSteps);
 
-            if (stepIndex + 1 < steps.Length) StartStep(stepIndex + 1);
-            else finishPopup.ShowCorrect();
+            if (stepIndex + 1 < steps.Length)
+            {
+                StartStep(stepIndex + 1);
+                yield break;
+            }
+
+            Completed?.Invoke();
+            finishPopup.ShowCorrect(TrainingSession.Total);
         }
     }
 }

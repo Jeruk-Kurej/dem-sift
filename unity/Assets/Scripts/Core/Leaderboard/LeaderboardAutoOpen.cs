@@ -1,3 +1,4 @@
+using DEMSIFT.Data;
 using DEMSIFT.Scoring;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ namespace DEMSIFT.Leaderboard
 
         private void Start()
         {
-            if (ScoreSession.TakeLeaderboardPending()) panel.OpenOnCurrentPlayer();
+            if (ScoreSession.TakeLeaderboardPending()) panel.OpenOnCurrentPlayer(ResultFile.Pengetahuan);
+            else if (TrainingSession.TakeLeaderboardPending()) panel.OpenOnCurrentPlayer(ResultFile.Pelatihan);
         }
     }
 }

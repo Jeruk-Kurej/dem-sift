@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DEMSIFT.Data;
 using TMPro;
 using UnityEngine;
@@ -36,12 +37,25 @@ namespace DEMSIFT.Admin
         public void ConfirmReset()
         {
             resetConfirm.SetActive(false);
-            statusLabel.text = $"Data direset. Arsip: {ResultFile.Archive()}";
+
+            var archived = new List<string>();
+            foreach (ResultFile file in ResultFile.All)
+            {
+                if (file.Exists) archived.Add(file.Archive());
+            }
+            statusLabel.text = $"Data direset. Arsip: {string.Join(", ", archived)}";
         }
 
         public void Export()
         {
-            if (HasData()) statusLabel.text = $"Tersimpan: {ResultFile.ExportCsv()}";
+            if (!HasData()) return;
+
+            var exported = new List<string>();
+            foreach (ResultFile file in ResultFile.All)
+            {
+                if (file.Exists) exported.Add(file.ExportCsv());
+            }
+            statusLabel.text = $"Tersimpan: {string.Join(", ", exported)}";
         }
 
         public void OpenFolder()
@@ -51,7 +65,10 @@ namespace DEMSIFT.Admin
 
         private bool HasData()
         {
-            if (ResultFile.Exists) return true;
+            foreach (ResultFile file in ResultFile.All)
+            {
+                if (file.Exists) return true;
+            }
 
             statusLabel.text = "Belum ada data.";
             return false;
