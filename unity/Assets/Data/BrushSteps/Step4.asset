@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2b2678d0fb44e4d8da4d8282564883, type: 3}
+  m_Name: Step4
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.BrushStepData
+  instruction: Sikat bagian dalam kanan atas dan bawah
+  motionLabel: 'Gerakan: memutar kecil'
+  hint: Coba gerakkan sikatnya memutar kecil ya!
+  mouthImage: {fileID: 21300000, guid: bd20346e7b66945b594a429aaf1c6df2, type: 3}
+  zones:
+  - serializedVersion: 2
+    x: 0.125
+    y: 0.5972222
+    width: 0.2421875
+    height: 0.18055555
+  - serializedVersion: 2
+    x: 0.1484375
+    y: 0.25
+    width: 0.1875
+    height: 0.2361111
+  motion: 2
+  parTime: 15

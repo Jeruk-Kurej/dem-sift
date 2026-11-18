@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pelatihan_1_Persiapan.unity
     guid: 6d4f0bc7fe093420c8350b7926b404fb
   - enabled: 1
-    path: Assets/Scenes/Pelatihan_3_LangkahSikat.unity
+    path: Assets/Scenes/Pelatihan_2_Menyikat.unity
     guid: e0fbb1548e12847079fb4514950ee002
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
