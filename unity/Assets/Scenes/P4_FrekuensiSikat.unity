@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5921470}
   - component: {fileID: 5921471}
+  - component: {fileID: 5921472}
   m_Layer: 5
   m_Name: QuizContainer
   m_TagString: Untagged
@@ -169,14 +170,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2416435a160cb488a81c5945bd6212bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Quiz.QuizController
+  groups:
+  - {fileID: 5921472}
+  submitButton: {fileID: 1188720850}
+  clearWrongChoices: 0
+  soalScore: {fileID: 1457726861}
+  resultPopup: {fileID: 1984414918}
+--- !u!114 &5921472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d915a023726435099e253365f7f125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Quiz.ChoiceGroup
   question: {fileID: 11400000, guid: 59d2269fecb8840fbb37f69b958faa77, type: 2}
   questionLabel: {fileID: 820731510}
   answerButtonContainer: {fileID: 904925042}
   answerButtonPrefab: {fileID: 5075803117231708726, guid: 8088bfe5c400247c697639af90bc4cac, type: 3}
-  submitButton: {fileID: 1188720850}
   selectedColor: {r: 0.8509804, g: 0.8, b: 0.96862745, a: 1}
-  soalScore: {fileID: 1457726861}
-  resultPopup: {fileID: 1984414918}
 --- !u!1 &503494041
 GameObject:
   m_ObjectHideFlags: 0

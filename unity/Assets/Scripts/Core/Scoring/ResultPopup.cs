@@ -25,6 +25,11 @@ namespace DEMSIFT.Scoring
             Show(correctMessage, $"Skor: {score}", true);
         }
 
+        public void ShowCorrect()
+        {
+            Show(correctMessage, string.Empty, true);
+        }
+
         public void ShowWrong(int lostPoints)
         {
             Show(wrongMessage, lostPoints > 0 ? $"-{lostPoints}" : string.Empty, false);

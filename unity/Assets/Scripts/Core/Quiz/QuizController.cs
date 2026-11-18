@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using DEMSIFT.Scoring;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,88 +6,76 @@ namespace DEMSIFT.Quiz
 {
     public class QuizController : MonoBehaviour
     {
-        [Header("Data")]
-        [SerializeField] private QuestionData question;
-
-        [Header("UI References")]
-        [SerializeField] private TMP_Text questionLabel;
-        [SerializeField] private Transform answerButtonContainer;
-        [SerializeField] private Button answerButtonPrefab;
+        [Header("Questions")]
+        [SerializeField] private ChoiceGroup[] groups;
         [SerializeField] private Button submitButton;
-        [SerializeField] private Color selectedColor = new(1f, 0.85f, 0.3f);
+        [Tooltip("Clears a wrong choice after Submit so the player sees which row to try again.")]
+        [SerializeField] private bool clearWrongChoices;
 
         [Header("Result")]
+        [Tooltip("Optional. Leave empty for a soal without a score.")]
         [SerializeField] private SoalScore soalScore;
         [SerializeField] private ResultPopup resultPopup;
 
-        private readonly List<Button> answerButtons = new();
-        private int selectedIndex = -1;
-
         private void Start()
         {
-            questionLabel.text = question.questionText;
-            SpawnAnswerButtons();
+            foreach (ChoiceGroup group in groups)
+            {
+                group.Build(() => !resultPopup.IsOpen);
+                group.SelectionChanged += RefreshSubmit;
+            }
 
             submitButton.interactable = false;
             submitButton.onClick.AddListener(Submit);
         }
 
-        // --- Setup ---
-        private void SpawnAnswerButtons()
-        {
-            bool usesImages = question.optionImages != null && question.optionImages.Length == question.options.Length;
-
-            for (int i = 0; i < question.options.Length; i++)
-            {
-                int optionIndex = i;
-                Button button = Instantiate(answerButtonPrefab, answerButtonContainer);
-
-                TMP_Text label = button.GetComponentInChildren<TMP_Text>();
-                Image icon = button.transform.Find("AnswerImage")?.GetComponent<Image>();
-
-                if (usesImages && icon != null)
-                {
-                    icon.sprite = question.optionImages[i];
-                    icon.gameObject.SetActive(true);
-                    if (label != null) label.gameObject.SetActive(false);
-                }
-                else
-                {
-                    if (label != null) label.text = question.options[i];
-                    if (icon != null) icon.gameObject.SetActive(false);
-                }
-
-                button.onClick.AddListener(() => Select(optionIndex));
-                answerButtons.Add(button);
-            }
-        }
-
         // --- Answering ---
-        private void Select(int optionIndex)
+        private void RefreshSubmit()
         {
-            if (resultPopup.IsOpen) return;
-
-            selectedIndex = optionIndex;
-            submitButton.interactable = true;
-
-            for (int i = 0; i < answerButtons.Count; i++)
-            {
-                answerButtons[i].image.color = i == selectedIndex ? selectedColor : Color.white;
-            }
+            submitButton.interactable = AllSelected();
         }
 
         private void Submit()
         {
-            if (selectedIndex < 0 || resultPopup.IsOpen) return;
+            if (!AllSelected() || resultPopup.IsOpen) return;
 
-            if (selectedIndex == question.correctAnswerIndex)
+            if (AllCorrect())
             {
-                soalScore.Complete();
+                if (soalScore != null) soalScore.Complete();
+                else resultPopup.ShowCorrect();
+                return;
             }
-            else
+
+            int lostPoints = soalScore != null ? soalScore.RegisterWrongAttempt() : 0;
+            if (clearWrongChoices) ClearWrongChoices();
+            resultPopup.ShowWrong(lostPoints);
+        }
+
+        private void ClearWrongChoices()
+        {
+            foreach (ChoiceGroup group in groups)
             {
-                resultPopup.ShowWrong(soalScore.RegisterWrongAttempt());
+                if (!group.IsCorrect) group.ClearSelection();
             }
+        }
+
+        // --- Checks ---
+        private bool AllSelected()
+        {
+            foreach (ChoiceGroup group in groups)
+            {
+                if (!group.HasSelection) return false;
+            }
+            return true;
+        }
+
+        private bool AllCorrect()
+        {
+            foreach (ChoiceGroup group in groups)
+            {
+                if (!group.IsCorrect) return false;
+            }
+            return true;
         }
     }
 }
