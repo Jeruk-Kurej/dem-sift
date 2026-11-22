@@ -15,17 +15,17 @@ MonoBehaviour:
   instruction: Sikat bagian luar gigi kanan atas dan bawah
   motionLabel: 'Gerakan: memutar kecil'
   hint: Coba gerakkan sikatnya memutar kecil ya!
-  mouthImage: {fileID: 21300000, guid: bd20346e7b66945b594a429aaf1c6df2, type: 3}
+  mouthImage: {fileID: 21300000, guid: b6b77c883d94d4f4595fa1ce9fd57639, type: 3}
   zones:
   - serializedVersion: 2
-    x: 0.125
-    y: 0.5972222
-    width: 0.2421875
-    height: 0.18055555
+    x: 0.07177033
+    y: 0.46043167
+    width: 0.28110048
+    height: 0.22482014
   - serializedVersion: 2
-    x: 0.1484375
-    y: 0.25
-    width: 0.1875
-    height: 0.2361111
+    x: 0.09569378
+    y: 0.29856116
+    width: 0.25717703
+    height: 0.17985612
   motion: 2
   parTime: 15

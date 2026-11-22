@@ -16,6 +16,8 @@ namespace DEMSIFT.Quiz
         [SerializeField] private Transform answerButtonContainer;
         [SerializeField] private Button answerButtonPrefab;
         [SerializeField] private Color selectedColor = new(1f, 0.85f, 0.3f);
+        [Tooltip("Keep the option text under the picture instead of hiding it (image answers only).")]
+        [SerializeField] private bool keepLabelWithImage;
 
         private readonly List<Button> answerButtons = new();
         private Func<bool> selectionAllowed;
@@ -56,7 +58,11 @@ namespace DEMSIFT.Quiz
                 {
                     icon.sprite = question.optionImages[i];
                     icon.gameObject.SetActive(true);
-                    if (label != null) label.gameObject.SetActive(false);
+                    if (label != null)
+                    {
+                        label.text = question.options[i];
+                        label.gameObject.SetActive(keepLabelWithImage);
+                    }
                 }
                 else
                 {

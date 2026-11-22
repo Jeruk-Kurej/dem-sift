@@ -15,17 +15,17 @@ MonoBehaviour:
   instruction: Sikat bagian dalam gigi atas dan bawah dengan gerakan menyapu
   motionLabel: 'Gerakan: menyapu'
   hint: Tarik sikatnya ke satu arah, lepas, lalu ulangi ya!
-  mouthImage: {fileID: 21300000, guid: bd20346e7b66945b594a429aaf1c6df2, type: 3}
+  mouthImage: {fileID: 21300000, guid: eed8d41c179d24736b11a8dfd7a0d0fe, type: 3}
   zones:
   - serializedVersion: 2
-    x: 0.3515625
-    y: 0.5138889
-    width: 0.296875
-    height: 0.16666667
+    x: 0.24691358
+    y: 0.62343097
+    width: 0.5144033
+    height: 0.18828452
   - serializedVersion: 2
-    x: 0.328125
-    y: 0.29166666
-    width: 0.34375
-    height: 0.16666667
+    x: 0.23662551
+    y: 0.13179916
+    width: 0.5349794
+    height: 0.15690376
   motion: 3
   parTime: 15

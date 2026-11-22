@@ -15,12 +15,12 @@ MonoBehaviour:
   instruction: Jangan lupa sikat langit-langit mulut
   motionLabel: 'Gerakan: bolak-balik'
   hint: Coba gerakkan sikatnya bolak-balik ya!
-  mouthImage: {fileID: 21300000, guid: bd20346e7b66945b594a429aaf1c6df2, type: 3}
+  mouthImage: {fileID: 21300000, guid: fb06da56156fb46c59eaa545e07ba471, type: 3}
   zones:
   - serializedVersion: 2
-    x: 0.3359375
-    y: 0.4861111
-    width: 0.328125
-    height: 0.15277778
+    x: 0.29522613
+    y: 0.5425532
+    width: 0.4522613
+    height: 0.20212767
   motion: 1
   parTime: 15

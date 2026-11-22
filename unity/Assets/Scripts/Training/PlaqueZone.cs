@@ -37,7 +37,7 @@ namespace DEMSIFT.Training
             {
                 Image spot = Instantiate(spotPrefab, transform);
                 RectTransform spotRect = (RectTransform)spot.transform;
-                float size = Random.Range(spotSizeRange.x, spotSizeRange.y);
+                float size = Mathf.Min(Random.Range(spotSizeRange.x, spotSizeRange.y), Mathf.Min(rect.width, rect.height) * 0.5f);
                 spotRect.sizeDelta = new Vector2(size, size);
                 spotRect.localRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
                 spotRect.anchoredPosition = SpreadPosition(rect, i, count, size * 0.5f);

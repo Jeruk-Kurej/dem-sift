@@ -60,6 +60,7 @@ namespace DEMSIFT.Training
             BrushStepData step = steps[index];
 
             mouthImage.sprite = step.mouthImage;
+            FitMouthToSprite(step.mouthImage);
             instructionLabel.text = step.instruction;
             motionLabel.text = step.motionLabel;
             progressLabel.text = $"{index + 1}/{steps.Length}";
@@ -69,6 +70,14 @@ namespace DEMSIFT.Training
             scrubber.Begin(step.motion, zones);
             stepStart = Time.time;
             finishingStep = false;
+        }
+
+        private void FitMouthToSprite(Sprite sprite)
+        {
+            if (!mouthImage.TryGetComponent(out AspectRatioFitter fitter)) return;
+
+            fitter.aspectRatio = sprite.rect.width / sprite.rect.height;
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)mouthImage.transform);
         }
 
         private void SpawnZones(BrushStepData step)

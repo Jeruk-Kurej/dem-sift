@@ -15,17 +15,17 @@ MonoBehaviour:
   instruction: Sikat gigi depan dengan gerakan naik-turun
   motionLabel: 'Gerakan: naik-turun'
   hint: Coba gerakkan sikatnya naik-turun ya!
-  mouthImage: {fileID: 21300000, guid: bd20346e7b66945b594a429aaf1c6df2, type: 3}
+  mouthImage: {fileID: 21300000, guid: b6b77c883d94d4f4595fa1ce9fd57639, type: 3}
   zones:
   - serializedVersion: 2
-    x: 0.3671875
-    y: 0.625
-    width: 0.265625
-    height: 0.22222222
+    x: 0.2751196
+    y: 0.46043167
+    width: 0.45454547
+    height: 0.25179857
   - serializedVersion: 2
-    x: 0.3359375
-    y: 0.15277778
-    width: 0.328125
-    height: 0.19444445
+    x: 0.28708133
+    y: 0.24460432
+    width: 0.430622
+    height: 0.20683454
   motion: 0
   parTime: 15
