@@ -9,12 +9,36 @@ namespace DEMSIFT.HandTracking
         private static float cursorX;
         private static float cursorY;
         private static float pinchRatio = 1f;
+        private static bool hasPalm;
+        private static Vector2 palmCenter;
+        private static Vector2 palmAxis;
+
+        public static void PublishPalm(Vector2 center, Vector2 axis)
+        {
+            lock (syncRoot)
+            {
+                hasPalm = true;
+                palmCenter = center;
+                palmAxis = axis;
+            }
+        }
+
+        public static bool TryGetPalm(out Vector2 center, out Vector2 axis)
+        {
+            lock (syncRoot)
+            {
+                center = palmCenter;
+                axis = palmAxis;
+                return hasHand && hasPalm;
+            }
+        }
 
         public static void Publish(bool handFound, float x, float y, float ratio)
         {
             lock (syncRoot)
             {
                 hasHand = handFound;
+                if (!handFound) hasPalm = false;
                 cursorX = x;
                 cursorY = y;
                 pinchRatio = ratio;

@@ -180,6 +180,15 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
       float cx = (thumbTip.x + indexTip.x) * 0.5f;
       float cy = (thumbTip.y + indexTip.y) * 0.5f;
       HandCursorData.Publish(true, cx, cy, ratio);
+
+      if (lm.Count > 17)
+      {
+        var palm = new Vector2(
+          (wrist.x + lm[5].x + middleBase.x + lm[13].x + lm[17].x) / 5f,
+          (wrist.y + lm[5].y + middleBase.y + lm[13].y + lm[17].y) / 5f);
+        var axis = new Vector2(middleBase.x - wrist.x, middleBase.y - wrist.y);
+        HandCursorData.PublishPalm(palm, axis);
+      }
     }
 
     private static float Dist(float x1, float y1, float x2, float y2)

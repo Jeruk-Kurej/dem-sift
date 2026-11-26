@@ -56,7 +56,7 @@ namespace DEMSIFT.Training
             }
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(zoneLayer, input.ScreenPosition, null, out Vector2 point);
-            classifier.Add(point, Time.unscaledTime);
+            classifier.Add(point / Mathf.Max(input.MotionScale, 0.01f), Time.unscaledTime);
             Score = classifier.Score(motion);
 
             IsInZone = false;

@@ -26,6 +26,8 @@ namespace DEMSIFT.HandTracking
         private bool hasHand;
         private bool isPinching;
 
+        public static bool Hidden { get; set; }
+
         public Vector2 ScreenPosition => screenPosition;
         public bool HasHand => hasHand;
         public bool IsPinching => isPinching;
@@ -80,7 +82,7 @@ namespace DEMSIFT.HandTracking
 
         private void SetVisible(bool isVisible)
         {
-            if (graphic != null) graphic.enabled = isVisible;
+            if (graphic != null) graphic.enabled = isVisible && !Hidden;
         }
     }
 }

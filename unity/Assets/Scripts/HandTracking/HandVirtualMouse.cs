@@ -41,8 +41,10 @@ namespace DEMSIFT.HandTracking
                 return;
             }
 
-            Send(handCursor.ScreenPosition, handCursor.IsPinching);
+            Send(handCursor.ScreenPosition, handCursor.IsPinching && !ClickBlocked);
         }
+
+        public static bool ClickBlocked { get; set; }
 
         // --- Device state ---
         private void Send(Vector2 position, bool pressed)
