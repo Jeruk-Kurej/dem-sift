@@ -29,6 +29,8 @@ namespace DEMSIFT.Training
         public bool UsingHand => HandTrackingSetting.IsEnabled;
         public bool HasHand => hasHand;
         public float PalmSize => palmSize;
+        public float MotionScore => scrubber != null ? scrubber.Score : 0f;
+        public bool IsInZone => scrubber != null && scrubber.IsInZone;
 
         public override bool IsBrushing => UsingHand
             ? hasHand

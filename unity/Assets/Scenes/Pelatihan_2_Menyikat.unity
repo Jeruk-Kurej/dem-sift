@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 212689875}
   - component: {fileID: 212689874}
   - component: {fileID: 212689879}
+  - component: {fileID: 212689880}
   m_Layer: 0
   m_Name: Brushing
   m_TagString: Untagged
@@ -206,12 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70b4b2d069444c5bbdec2412bb2ed1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.BrushScrubber
-  input: {fileID: 212689877}
+  input: {fileID: 212689880}
   zoneLayer: {fileID: 828287574}
   motionWindow: 1.2
   minimumSpeed: 80
   brushRadius: 130
-  cleanPerSecond: 3
+  cleanPerSecond: 0.8
 --- !u!114 &212689877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +253,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.TrainingResultSaver
   brushing: {fileID: 212689874}
+--- !u!114 &212689880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212689873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232adb618ee204f17b94092c7c8d8ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.HandBrushInput
+  scrubber: {fileID: 212689876}
+  mirrorX: 0
+  reach: 0.8
+  minCutoff: 1
+  beta: 8
+  referencePalmSize: 0.15
+  minMotionScale: 0.4
+  maxMotionScale: 2.5
+  palmSizeSmoothing: 2
 --- !u!1 &247925884
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +376,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284552470
+    rgba: 1733593
   m_fontColor: {r: 0.85, g: 0.45, b: 0.1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -677,6 +699,7 @@ RectTransform:
   - {fileID: 285177450}
   - {fileID: 397814756}
   - {fileID: 1533681558}
+  - {fileID: 1880011967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1338,7 +1361,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284552470
+    rgba: 4279923673
   m_fontColor: {r: 0.85, g: 0.45, b: 0.1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1452,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837c263aaed7e4647b2606d760d11803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.BrushCursor
-  input: {fileID: 212689877}
+  input: {fileID: 212689880}
   idleScale: 0.9
   brushingScale: 1.05
   scaleSpeed: 12
@@ -1610,6 +1633,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225576054873187716, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 265.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444905424517949554, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298256960560461573, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284552470
+      objectReference: {fileID: 0}
     - target: {fileID: 4150100831832510511, guid: e4cee967b99234fe6904f44e3b2fdcc6, type: 3}
       propertyPath: m_text
       value: Ayo Sikat Gigi!
@@ -1643,6 +1734,165 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1880011966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880011967}
+  - component: {fileID: 1880011970}
+  - component: {fileID: 1880011969}
+  - component: {fileID: 1880011968}
+  m_Layer: 5
+  m_Name: DistanceGuideLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1880011967
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880011966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 511969684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -430}
+  m_SizeDelta: {x: 1560, y: 54.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1880011968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880011966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9155635c20442387cf854ff24a4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DEMSIFT.Training.HandDistanceGuide
+  input: {fileID: 212689880}
+  label: {fileID: 1880011969}
+  tooFarBelow: 0.08
+  tooCloseAbove: 0.35
+  noHandDelay: 0.5
+  noHandText: Angkat tanganmu ke depan kamera ya!
+  tooFarText: Dekatkan tanganmu ke kamera ya!
+  tooCloseText: Mundur sedikit ya!
+  showNumbers: 1
+--- !u!114 &1880011969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880011966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ce51158d659154e10955d199527a8cb9, type: 2}
+  m_sharedMaterial: {fileID: -1492628458200349259, guid: ce51158d659154e10955d199527a8cb9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 1733593
+  m_fontColor: {r: 0.85, g: 0.45, b: 0.1, a: 0}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 34
+  m_fontSizeBase: 34
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656bu
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1880011970
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880011966}
+  m_CullTransparentMesh: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

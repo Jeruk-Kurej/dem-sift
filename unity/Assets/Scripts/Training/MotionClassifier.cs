@@ -74,7 +74,7 @@ namespace DEMSIFT.Training
         {
             float turns = Mathf.Abs(f.SignedTurn) / (2f * Mathf.PI);
             float consistency = Mathf.Abs(f.SignedTurn) / Mathf.Max(f.AbsoluteTurn, 0.001f);
-            return Mathf.Clamp01(turns / 0.75f) * Mathf.Clamp01((consistency - 0.5f) / 0.3f);
+            return Mathf.Clamp01(turns / 0.6f) * Mathf.Clamp01((consistency - 0.45f) / 0.3f);
         }
 
         private static float SweepScore(Features f)

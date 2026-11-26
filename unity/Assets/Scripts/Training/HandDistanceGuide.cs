@@ -38,7 +38,8 @@ namespace DEMSIFT.Training
 
             if (showNumbers && input.HasHand)
             {
-                string numbers = $"telapak {input.PalmSize:0.00}  skala {input.MotionScale:0.00}";
+                string zone = input.IsInZone ? "ya" : "tidak";
+                string numbers = $"telapak {input.PalmSize:0.00}  skala {input.MotionScale:0.00}  gerakan {input.MotionScore:0.00}  di kotoran {zone}";
                 message = string.IsNullOrEmpty(message) ? numbers : message + "\n" + numbers;
             }
 
